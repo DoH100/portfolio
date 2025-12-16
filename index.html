@@ -89,6 +89,11 @@
         .tech-item-sm img { width: 32px; height: 32px; object-fit: contain; margin-bottom: 5px; }
         .tech-label { font-size: 0.7rem; color: #ccc; text-align: center; line-height: 1.2; font-weight: 500; }
 
+        /* AWS 아이콘 강제 흰색 변환 클래스 */
+        .force-white {
+            filter: brightness(0) invert(1);
+        }
+
         /* 교육 타임라인 */
         .edu-item {
             margin-bottom: 1.5rem;
@@ -138,7 +143,7 @@
         
         .project-desc { color: #ccc; border-top: 1px solid #333; padding-top: 1.5rem; margin-top: 1rem; }
 
-        /* === NEW: 검증된 기술 역량 (경험 기반) === */
+        /* === 기술 역량 섹션 (한글 제목) === */
         .skill-highlights {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -283,7 +288,7 @@
                     <span class="tech-label">RabbitMQ</span>
                 </div>
                 <div class="tech-item-sm">
-                    <img src="https://cdn.simpleicons.org/amazonwebservices/white" alt="AWS">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" class="force-white">
                     <span class="tech-label">AWS</span>
                 </div>
                 <div class="tech-item-sm">
@@ -328,25 +333,25 @@
 
         <div class="skill-highlights">
             <div class="skill-box">
-                <h3>High-Concurrency (Redis)</h3>
+                <h3>동시성 제어 & 트래픽 처리 (Redis)</h3>
                 <p>
                     선착순 이벤트나 재고 관리 등 동시성 이슈가 발생하는 환경에서, <strong>Redis Atomic Operation</strong>과 <strong>Distributed Lock</strong>을 활용해 데이터 정합성을 보장하고 DB 부하를 최소화할 수 있습니다.
                 </p>
             </div>
             <div class="skill-box">
-                <h3>Scalability (Architecture)</h3>
+                <h3>아키텍처 확장성 (Architecture)</h3>
                 <p>
                     트래픽 분산을 위해 <strong>DB Replication(Master/Slave)</strong> 구조를 설계하고, <strong>AWS CloudFront/S3</strong>를 연동해 정적 리소스를 효율적으로 처리하며 비용을 절감해본 경험이 있습니다.
                 </p>
             </div>
             <div class="skill-box">
-                <h3>Async System (RabbitMQ)</h3>
+                <h3>비동기 시스템 & EDA (RabbitMQ)</h3>
                 <p>
                     시스템 간의 강한 결합을 풀기 위해 <strong>RabbitMQ/Kafka</strong>를 활용하여 핵심 로직과 부가 기능(알림, 정산)을 비동기 이벤트로 분리하는 <strong>EDA(Event-Driven Architecture)</strong>를 구현할 수 있습니다.
                 </p>
             </div>
             <div class="skill-box">
-                <h3>Performance (Elasticsearch)</h3>
+                <h3>검색 성능 최적화 (Elasticsearch)</h3>
                 <p>
                     RDB의 검색 성능 한계(Full Scan)를 극복하기 위해 <strong>Elasticsearch</strong>의 역인덱싱과 형태소 분석기를 도입하여, 대용량 데이터에서도 <strong>정확하고 빠른 검색 엔진</strong>을 구축할 수 있습니다.
                 </p>
