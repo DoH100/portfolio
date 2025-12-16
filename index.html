@@ -127,24 +127,45 @@
 
         .project-period {
             font-size: 0.9rem;
-            color: #58a6ff; /* 기간 강조 */
+            color: #58a6ff; 
         }
 
-        .project-tech-tags {
+        /* 아이콘으로 대체된 기술 스택 */
+        .tech-icons {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 1rem;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding: 1rem 0;
+            border-top: 1px solid #21262d;
+            border-bottom: 1px solid #21262d;
+        }
+        
+        .tech-icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #8b949e;
+            transition: transform 0.2s;
         }
 
-        .tech-tag {
-            background: #21262d; 
-            padding: 0.3rem 0.8rem;
-            border-radius: 16px;
-            font-size: 0.8rem;
+        .tech-icon-item:hover {
+            transform: translateY(-5px);
             color: #39c0c8;
-            border: 1px solid #30363d;
-            font-weight: 500;
+        }
+
+        .tech-icon-item img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+        }
+        /* 이미지 태그가 없을 경우를 대비한 스타일 */
+        .tech-icon-item span {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
         }
 
         .project-description {
@@ -165,7 +186,7 @@
 
         .achievement-item {
             padding: 2rem;
-            background: #161b22; /* 살짝 밝은 배경 */
+            background: #161b22; 
             border-radius: 8px;
             border-top: 3px solid #39c0c8;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -195,11 +216,11 @@
         }
 
         .achievement-item.chart-card {
-            grid-column: span 2; /* 차트 항목은 2칸 차지 */
+            grid-column: span 2; 
         }
 
         .achievement-item.text-only {
-            border-top: 3px solid #8b949e; /* 텍스트 전용은 색상 변경 */
+            border-top: 3px solid #8b949e; 
         }
 
         .chart-container {
@@ -211,48 +232,36 @@
             padding: 1rem;
         }
 
-        /* 기술 역량 섹션 */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+        /* 추가된 성과 리스트 스타일 */
+        .full-achievement-list {
+            margin-top: 1.5rem;
+            list-style: none;
+            padding: 0;
         }
-
-        .skill-category {
-            padding: 1.5rem;
-            background: #161b22;
+        
+        .full-achievement-list li {
+            background: #101217;
+            padding: 1.2rem;
             border-radius: 6px;
-            border: 1px solid #21262d;
-        }
-
-        .skill-category h4 {
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            text-transform: uppercase;
-            color: #39c0c8;
-            letter-spacing: 1px;
-            margin-top: 0;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px dashed #21262d;
-        }
-
-        .skill-content {
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #58a6ff;
             font-size: 0.95rem;
-            color: #c9d1d9;
             line-height: 1.7;
         }
-
-        .skill-content strong {
+        
+        .full-achievement-list li strong {
             color: #f0f6fc;
-            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
         }
 
-        /* 타임라인 섹션 */
+        /* 교육 및 활동 */
         .timeline {
             position: relative;
             padding-left: 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .timeline::before {
@@ -308,34 +317,6 @@
             line-height: 1.7;
         }
 
-        /* 결론 섹션 */
-        .focus-points {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: #161b22;
-            border-radius: 8px;
-            border: 1px solid #39c0c8;
-        }
-
-        .achievement {
-            font-size: 1rem;
-            color: #c9d1d9;
-            margin-bottom: 1.2rem;
-            line-height: 1.7;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .achievement::before {
-            content: '▶';
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: #39c0c8;
-            font-weight: 700;
-            font-size: 0.8rem;
-        }
 
         /* 푸터 */
         footer {
@@ -354,7 +335,7 @@
 
         .link-group a {
             margin: 0 1rem;
-            color: #58a6ff; /* 링크 색상 변경 */
+            color: #58a6ff; 
         }
 
         /* 반응형 디자인 */
@@ -402,7 +383,7 @@
                 <h1>백도현 🧑‍💻</h1>
                 <div class="tagline">Backend Developer | 비용 효율과 성능을 최우선으로</div>
                 <p>
-                    비용 효율과 성능을 최우선으로 고려하며 서비스 성장을 이끌고, 예상치 못한 문제에 깊이 몰입하여 해결하는 백엔드 개발자입니다.
+                    [cite_start]비용 효율과 성능을 최우선으로 고려하며 서비스의 성장을 이끌고, 예상치 못한 문제에 깊이 몰입하여 해결하는 백엔드 개발자입니다[cite: 3].
                     UP-PICK 프로젝트에서 ElasticSearch 도입, Master/Slave Replication 구축, Virtual Thread 적용 등을 통해 응답 속도 및 시스템 안정성을 확보했습니다.
                     이 경험을 바탕으로 대규모 트래픽 환경에서도 견고하게 확장되는 서비스를 만들고 싶습니다.
                 </p>
@@ -410,44 +391,78 @@
         </header>
 
         <main>
+            <section id="tech-stack">
+                <h2>기술 스택</h2>
+                
+                <div class="tech-icons">
+                    <div class="tech-icon-item">
+                          <span>Java21</span>
+                    </div>
+                    <div class="tech-icon-item">
+                          <span>Spring Boot</span>
+                    </div>
+                    <div class="tech-icon-item">
+                          <span>MySQL</span>
+                    </div>
+                    <div class="tech-icon-item">
+                          <span>Redis</span>
+                    </div>
+                    <div class="tech-icon-item">
+                          <span>Elasticsearch</span>
+                    </div>
+                    <div class="tech-icon-item">
+                          <span>RabbitMQ</span>
+                    </div>
+                    <div class="tech-icon-item">
+                          <span>AWS</span>
+                    </div>
+                    <div class="tech-icon-item">
+                          <span>Docker</span>
+                    </div>
+                </div>
+
+                <ul class="full-achievement-list" style="margin-top: 4rem;">
+                    <li>
+                        [cite_start]<strong>Backend:</strong> JAVA17, Spring Boot [cite: 12]
+                    </li>
+                    <li>
+                        [cite_start]<strong>Infrastructure & DateBase:</strong> MySQL, Redis, Elasticsearch, RabbitMQ, Docker, AWS [cite: 18]
+                    </li>
+                    <li>
+                        [cite_start]<strong>Collaboration:</strong> Slack, GitHub [cite: 19]
+                    </li>
+                </ul>
+            </section>
+
             <section id="projects">
-                <h2>프로젝트 성과 분석: UP-PICK</h2>
+                <h2>프로젝트 성과: UP-PICK - 중고 거래 플랫폼</h2>
 
                 <div class="project-card">
                     <div class="project-header">
                         <div class="project-details">
-                            <h3>🎯 UP-PICK - 중고 거래 플랫폼</h3>
-                            <p class="project-period">2025.10.13 ~ 2025.11.19 (5주)</p>
+                            [cite_start]<h3>🎯 UP-PICK - 중고 거래 플랫폼 [cite: 9]</h3>
+                            [cite_start]<p class="project-period">2025.10.13 - 2025.11.19 (5주) [cite: 13]</p>
                         </div>
                         <div class="link-group" style="text-align: right;">
-                            <a href="https://github.com/DoH100" target="_blank">GitHub</a>
-                            <a href="#">Portfolio</a>
+                            [cite_start]<a href="https://github.com/DoH100" target="_blank">GitHub [cite: 5]</a>
+                            [cite_start]<a href="#">Portfolio [cite: 16]</a>
                         </div>
                     </div>
                     
-                    <div class="project-tech-tags">
-                        <span class="tech-tag">JAVA21</span>
-                        <span class="tech-tag">Spring Boot</span>
-                        <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">Redis</span>
-                        <span class="tech-tag">Elasticsearch</span>
-                        <span class="tech-tag">RabbitMQ</span>
-                        <span class="tech-tag">AWS</span>
-                        <span class="tech-tag">Docker</span>
-                    </div>
-
-                    <p class="project-description">
-                        흥정 없는 공정한 거래 환경 제공을 목표로, 고가용성 및 성능 향상을 위한 아키텍처 설계와 구현에 집중했습니다.
+                    <p class="project-description" style="border-top: none;">
+                        [cite_start]흥정 없는 공정한 거래 환경과 투명한 가격 형성 과정을 제공하고, 쇼핑의 게임화를 도입하여 즐거운 경쟁 요소를 제공하는 프로젝트입니다[cite: 10].
                     </p>
+
+                    <h3 style="margin-top: 0; border-bottom: 1px dashed #21262d; padding-bottom: 0.5rem;">주요 담당 역할 및 성과 (10가지)</h3>
 
                     <div class="achievements-grid">
                         
                         <div class="achievement-item chart-card">
-                            <div class="achievement-title">🔍 ElasticSearch 도입: 검색 성능 13배 향상</div>
-                            <div class="achievement-metric">690ms → 52ms</div>
+                            <div class="achievement-title">1. 🔍 검색 시스템 ElasticSearch 도입</div>
+                            [cite_start]<div class="achievement-metric">690ms → 52ms (13배 향상) [cite: 30]</div>
                             <div class="achievement-body">
-                                MySQL `LIKE` 검색의 Full Table Scan 문제를 해결하기 위해 ElasticSearch를 도입하고 한국어 형태소 분석을 적용했습니다.
-                                **평균 응답 시간을 약 13배 향상**시키고, 검색 정확도와 확장성을 확보했습니다. 
+                                [cite_start]**[상황]** MySQL LIKE 검색(690ms)은 Full Table Scan을 유발하며 형태소 분석이 불가능했고, MySQL Full-Text Search(302ms)도 확장성 및 한국어 처리 한계가 있었습니다[cite: 25, 26, 27, 28].<br>
+                                [cite_start]**[결정]** ElasticSearch를 도입하여 평균 응답 시간을 약 13배 향상시키고, 정확도와 확장성을 확보했습니다[cite: 30, 31].
                             </div>
                             <div class="chart-container">
                                 <canvas id="searchChart"></canvas>
@@ -455,11 +470,11 @@
                         </div>
 
                         <div class="achievement-item">
-                            <div class="achievement-title">⚡ Master/Slave Replication 구축</div>
-                            <div class="achievement-metric">Master CPU 800% → 30%</div>
+                            <div class="achievement-title">2. ⚡ DB Master/Slave Replication 구축</div>
+                            [cite_start]<div class="achievement-metric">Master CPU 800% → 30% 안정화 [cite: 46]</div>
                             <div class="achievement-body">
-                                단일 DB 인스턴스에 읽기/쓰기 트래픽 집중으로 발생했던 CPU 부하(800% 급등) 문제를 해결했습니다.
-                                Master/Slave 복제  를 적용하여 읽기 트래픽을 Slave로 분산, Master DB의 CPU 부하를 **30%로 안정화**했습니다.
+                                [cite_start]**[상황]** 단일 DB 인스턴스에 읽기/쓰기 트래픽 집중으로 CPU 부하가 800%까지 급등했습니다[cite: 41, 42].<br>
+                                [cite_start]**[결정]** Master/Slave Replication을 적용  하여 읽기 트래픽을 Slave로 분산, Master DB의 CPU 부하를 30%로 안정화하고 시스템 안정성을 높였습니다[cite: 45, 46].
                             </div>
                             <div class="chart-container" style="height: 180px;">
                                 <canvas id="replicaChart"></canvas>
@@ -467,33 +482,77 @@
                         </div>
 
                         <div class="achievement-item">
-                            <div class="achievement-title">📨 RabbitMQ 도입: 입찰 API 응답 속도 개선</div>
-                            <div class="achievement-metric">240ms → 153ms (36% 단축)</div>
+                            <div class="achievement-title">3. 🧵 Java Virtual Thread 도입</div>
+                            [cite_start]<div class="achievement-metric">평균 TPS 2.7배 증가 & 에러율 0.00% [cite: 56]</div>
                             <div class="achievement-body">
-                                입찰 후처리(정산, 알림)를 비동기로 전환하기 위해 RabbitMQ를 도입  했습니다. 핵심 로직과 후처리 로직을 분리하여 입찰 API의 **평균 응답 시간을 36% 단축**했습니다.
+                                [cite_start]**[상황]** 동시 접속자 증가 시 스레드 경합으로 응답 지연(P95 19.6초) 및 에러율(1.07%)이 발생했습니다[cite: 50, 51].<br>
+                                [cite_start]**[결정]** Virtual Thread를 적용  하여 블로킹 I/O를 효율적으로 처리, 평균 TPS를 약 2.7배 증가시키고 평균 응답 시간을 99.4% 개선하여 에러율 0.00%로 안정화했습니다[cite: 55, 56].
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-item">
+                            <div class="achievement-title">4. 📨 Message Queue (RabbitMQ) 도입</div>
+                            [cite_start]<div class="achievement-metric">API 응답 시간 240ms → 153ms (36% 단축) [cite: 65]</div>
+                            <div class="achievement-body">
+                                [cite_start]**[상황]** 상품 입찰 후처리(정산, 알림 등)를 동기적으로 진행하여 입찰 API 평균 응답 시간이 240ms로 길었습니다[cite: 59, 60].<br>
+                                [cite_start]**[결정]** Message Queue (RabbitMQ)를 도입  하여 핵심 로직과 후처리 로직을 분리, 평균 응답 시간을 약 36% 단축했습니다[cite: 63, 64, 65].
                             </div>
                             <div class="chart-container" style="height: 180px;">
                                 <canvas id="mqChart"></canvas>
                             </div>
                         </div>
+
+                        <div class="achievement-item text-only">
+                            <div class="achievement-title">5. 💾 Redis 캐싱을 통한 DB 부하 완화</div>
+                            [cite_start]<div class="achievement-metric">MySQL CPU 사용률 약 80~90% 감소 [cite: 38]</div>
+                            <div class="achievement-body">
+                                [cite_start]**[상황]** 반복적인 카테고리 조회 요청이 DB로 전달되어 부하 집중이 발생했습니다[cite: 34, 35].<br>
+                                [cite_start]**[결정]** Redis 캐싱 레이어를 도입하고 Cache-Aside 패턴  을 적용하여 반복 DB 접근을 줄여 MySQL 서버 CPU 사용률을 약 80~90% 감소시켰습니다[cite: 37, 38].
+                            </div>
+                        </div>
+
+                        <div class="achievement-item text-only">
+                            <div class="achievement-title">6. 🚀 Redis를 사용한 입찰 부하 분산</div>
+                            [cite_start]<div class="achievement-metric">TPS 약 1.5배 증가 & CPU 피크 사용률 50% 절감 [cite: 73]</div>
+                            <div class="achievement-body">
+                                [cite_start]**[상황]** 실시간 입찰 시 입찰가 조회/갱신 작업이 DB에 집중되어 CPU 부하(피크 9% 이상)를 유발하고 TPS가 낮았습니다[cite: 68, 69].<br>
+                                [cite_start]**[결정]** 입찰가 데이터를 Redis 기반 캐시에서 처리하도록 분산하여 입찰 처리량(TPS)을 약 1.5배 증가시키고 CPU 피크 사용률을 약 50% 절감했습니다[cite: 72, 73].
+                            </div>
+                        </div>
                         
                         <div class="achievement-item text-only">
-                            <div class="achievement-title">🧵 Java Virtual Thread 적용</div>
-                            <div class="achievement-metric">P95 응답시간 19.6초 → 110ms (99.4% 개선)</div>
+                            <div class="achievement-title">7. 🔢 조회수 로직의 동시성 실패 해결</div>
+                            [cite_start]<div class="achievement-metric">5,000회 동시 요청 100% 성공 & 처리 시간 59% 단축 [cite: 83]</div>
                             <div class="achievement-body">
-                                동시 접속 증가 시 발생했던 스레드 경합으로 인한 응답 지연 문제를 해결하기 위해 Virtual Thread  를 적용했습니다. 블로킹 I/O를 효율적으로 처리하여 평균 TPS **약 2.7배 증가** 및 에러율 0.00%를 달성했습니다.
+                                [cite_start]**[상황]** 낙관적 락을 사용한 조회수 증가 로직이 동시 요청시 실패율 70% 이상 발생했습니다[cite: 77, 78].<br>
+                                [cite_start]**[결정]** 조회수 증가 로직을 Redis 기반 In-memory 처리로 전환하여, 5,000회 동시 요청에서 100% 성공률을 달성하고 처리 시간을 약 59% 단축했습니다[cite: 82, 83].
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-item text-only">
+                            <div class="achievement-title">8. 💡 쿼리 튜닝: 복합 키 인덱스 적용</div>
+                            [cite_start]<div class="achievement-metric">평균 쿼리 응답 시간 417.6ms → 124.0ms (70% 단축) [cite: 97]</div>
+                            <div class="achievement-body">
+                                [cite_start]**[상황]** 경매 상태 및 입찰자 기준으로 조회 시 Full Table Scan이 발생하여 평균 쿼리 응답 시간이 417.6ms였습니다[cite: 92, 93].<br>
+                                [cite_start]**[결정]** `last_bidder_id`, `status`, `end_at` 순서의 복합 키 인덱스를 적용하여 평균 쿼리 응답 시간을 약 70% 단축했습니다[cite: 96, 97].
                             </div>
                         </div>
 
                         <div class="achievement-item text-only">
-                            <div class="achievement-title">💾 Redis 활용: 캐싱 및 동시성 해결</div>
-                            <div class="achievement-metric">CPU 피크 50% 절감, 동시 요청 100% 성공</div>
+                            <div class="achievement-title">9. ⚙️ Lambda SnapStart 적용</div>
+                            [cite_start]<div class="achievement-metric">평균 실행 시간 91.5% 단축 & 과금 비용 90.8% 절감 [cite: 106, 107]</div>
                             <div class="achievement-body">
-                                <ul>
-                                    <li>**입찰 부하 분산:** 실시간 입찰 조회/갱신을 Redis로 분산하여 DB CPU 피크 사용률 약 50% 절감.</li>
-                                    <li>**조회수 동시성 해결:** 낙관적 락 실패율(70%) 문제를 Redis In-memory 처리로 전환하여 5,000회 동시 요청에서 **100% 성공률** 달성.</li>
-                                    <li>**카테고리 캐싱:** Cache-Aside 패턴  을 적용하여 반복적인 카테고리 조회 요청으로 인한 MySQL CPU 사용률 약 80~90% 감소.</li>
-                                </ul>
+                                [cite_start]**[상황]** Java 기반 Lambda의 콜드스타트 지연(평균 47.83ms) 및 높은 실행 시간 변동성으로 비용 및 안정성이 저하되었습니다[cite: 101, 102].<br>
+                                [cite_start]**[결정]** AWS Lambda SnapStart를 적용  하여 초기화 상태를 프리워밍, 평균 실행 시간을 91.5% 단축하고 과금 비용을 90.8% 절감했습니다[cite: 105, 106, 107].
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-item text-only">
+                            <div class="achievement-title">10. ⏱️ Spring Batch 청크 사이즈 최적화</div>
+                            [cite_start]<div class="achievement-metric">청크 사이즈 100에서 가장 빠른 Job 실행 시간 달성 [cite: 89]</div>
+                            <div class="achievement-body">
+                                [cite_start]**[상황]** Spring Batch에서 처리 데이터의 청크 사이즈에 따라 MySQL 트랜잭션 효율이 달라져 락 경합 및 Undo 로그 부담을 최소화하는 최적 크기 탐색이 필요했습니다[cite: 86, 87].<br>
+                                [cite_start]**[결정]** 테스트를 통해 청크 사이즈 100이 가장 빠른 Job 전체 실행 시간을 달성함을 확인하고 적용했습니다[cite: 89].
                             </div>
                         </div>
 
@@ -501,36 +560,6 @@
                 </div>
             </section>
 
-            <section id="skills">
-                <h2>핵심 기술 역량</h2>
-
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h4>Language & Framework</h4>
-                        <div class="skill-content">
-                            <strong>Java (JAVA17/21)</strong>, **Spring Boot**, **Spring Data JPA**<br>
-                            SOLID 원칙과 디자인 패턴을 고려한 백엔드 코드를 작성하며, JPA/Hibernate를 활용한 쿼리 최적화에 능숙합니다.
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h4>Database & Caching & MQ</h4>
-                        <div class="skill-content">
-                            **MySQL**, **Redis**, **Elasticsearch**, **RabbitMQ**<br>
-                            Master/Slave 복제 및 인덱싱을 통한 DB 튜닝 경험. Redis 분산 락, 캐싱(Cache-Aside), RabbitMQ 비동기 처리 구현 경험.
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h4>Infrastructure & Cloud & DevOps</h4>
-                        <div class="skill-content">
-                            **AWS (ECS Fargate ARM64, Lambda SnapStart)**, **Docker**<br>
-                            비용 효율적인 Serverless 환경 최적화(SnapStart, ARM64 전환), 컨테이너 환경 배포 및 성능 모니터링 경험.
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
             <section id="education">
                 <h2>교육 & 활동</h2>
 
@@ -538,42 +567,30 @@
                     <div class="timeline-item">
                         <div class="timeline-header">
                             <h3>스파르타 스프링 백엔드 8기 과정 수료</h3>
-                            <span class="period">2025.06 ~ 2025.11</span>
+                            [cite_start]<span class="period">2025.06 ~ 2025.11 [cite: 110]</span>
                         </div>
                         <div class="timeline-desc">
-                            Java/Spring Boot 기반 웹 애플리케이션 개발 전반 학습. REST API 설계, JWT 인증·인가, JPA/Hibernate 등 실무 핵심 기술 실습.
+                            Java/Spring Boot 기반 웹 애플리케이션 개발 전반 학습. [cite_start]REST API 설계, JWT 인증·인가, JPA/Hibernate 등 실무 핵심 기술 실습[cite: 110].
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-header">
                             <h3>동의대학교 컴퓨터 공학과</h3>
-                            <span class="period">2020.03 ~</span>
+                            [cite_start]<span class="period">2020.03 ~ [cite: 109]</span>
                         </div>
                         <div class="timeline-desc">
-                            컴퓨터 과학 기초 지식 및 알고리즘, 자료구조 등의 핵심 이론 학습.
+                            [cite_start]컴퓨터 과학 기초 지식 및 알고리즘, 자료구조 등의 핵심 이론 학습[cite: 109].
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <section id="focus">
-                <h2>백도현의 핵심 가치</h2>
-
-                <div class="focus-points">
-                    <div class="achievement">▶ **성능과 안정성 우선:** 대규모 트래픽 환경에서 견고하게 확장되는 시스템 설계를 위해 성능 최적화와 아키텍처 안정성에 집중합니다.</div>
-                    
-                    <div class="achievement">▶ **비용 효율적 설계:** 단순한 기능 구현을 넘어, AWS 리소스 최적화(ARM64, SnapStart) 등 비용 효율을 고려한 설계를 통해 서비스 성장을 이끌었습니다.</div>
-                    
-                    <div class="achievement">▶ **명확한 소통과 설계:** 명확하고 읽기 쉬운 코드, 이유 있는 설계로 동료들과 생산적인 협업을 지향합니다.</div>
                 </div>
             </section>
         </main>
 
         <footer>
             <div class="link-group">
-                <a href="https://github.com/DoH100" target="_blank">GitHub</a> | 
-                <a href="mailto:ehgus66648@gmail.com">Email (ehgus66648@gmail.com)</a> | 
-                <a href="tel:01025916067">Phone (010-2591-6067)</a>
+                [cite_start]<a href="https://github.com/DoH100" target="_blank">GitHub [cite: 5]</a> | 
+                [cite_start]<a href="mailto:ehgus66648@gmail.com">Email (ehgus66648@gmail.com) [cite: 6]</a> | 
+                [cite_start]<a href="tel:01025916067">Phone (010-2591-6067) [cite: 7]</a>
             </div>
             <p style="margin-top: 1rem;">&copy; 2025 Baek Do Hyeon. Built with Clean & Minimalistic Tech Style.</p>
         </footer>
@@ -592,7 +609,7 @@
                 datasets: [{
                     label: '응답시간 (ms)',
                     data: [690, 302, 52],
-                    backgroundColor: ['#ef476f', '#ffd166', '#39c0c8'], /* 색상 변경 */
+                    backgroundColor: ['#ef476f', '#ffd166', '#39c0c8'], 
                     borderRadius: 6,
                     borderSkipped: false
                 }]
@@ -620,7 +637,7 @@
                 datasets: [{
                     label: 'CPU 부하 (%)',
                     data: [800, 30],
-                    backgroundColor: ['#ef476f', '#39c0c8'], /* 색상 변경 */
+                    backgroundColor: ['#ef476f', '#39c0c8'], 
                     borderRadius: 6,
                     borderSkipped: false
                 }]
@@ -649,7 +666,7 @@
                 datasets: [{
                     label: '평균 응답시간 (ms)',
                     data: [240, 153],
-                    backgroundColor: ['#ef476f', '#39c0c8'], /* 색상 변경 */
+                    backgroundColor: ['#ef476f', '#39c0c8'], 
                     borderRadius: 6,
                     borderSkipped: false
                 }]
