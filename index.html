@@ -226,7 +226,7 @@
             <div class="sidebar-title">Tech Stack</div>
             <div class="tech-grid-sm">
                 <div class="tech-item-sm">
-                    <img src="https://cdn.simpleicons.org/openjdk/white" alt="Java">
+                    <img src="https://cdn.simpleicons.org/java/white" alt="Java">
                     <span class="tech-label">Java 21</span>
                 </div>
                 <div class="tech-item-sm">
@@ -242,15 +242,15 @@
                     <span class="tech-label">Redis</span>
                 </div>
                 <div class="tech-item-sm">
-                    <img src="https://cdn.simpleicons.org/opensearch/38bdf8" alt="OpenSearch">
-                    <span class="tech-label">OpenSearch</span>
+                    <img src="https://cdn.simpleicons.org/elasticsearch/005571" alt="Elasticsearch">
+                    <span class="tech-label">Elastic<br>search</span>
                 </div>
                 <div class="tech-item-sm">
                     <img src="https://cdn.simpleicons.org/rabbitmq/FF6600" alt="RabbitMQ">
                     <span class="tech-label">RabbitMQ</span>
                 </div>
                 <div class="tech-item-sm">
-                    <img src="https://cdn.simpleicons.org/amazonaws/white" alt="AWS">
+                    <img src="https://cdn.simpleicons.org/amazonwebservices/white" alt="AWS">
                     <span class="tech-label">AWS</span>
                 </div>
                 <div class="tech-item-sm">
@@ -308,7 +308,7 @@
                     </div>
                     <div class="ps-block">
                         <span class="ps-label">[해결 방법]</span>
-                        AWS OpenSearch를 도입하여 역인덱스 기반의 검색 환경을 구축했습니다. nori 형태소 분석기를 적용하고 Redis를 통해 데이터를 실시간 동기화하여 평균 응답 속도를 52ms로 단축했습니다.
+                        <strong>Elasticsearch</strong>(ELK Stack)를 도입하여 역인덱스 기반의 검색 환경을 구축했습니다. nori 형태소 분석기를 적용하고 Redis를 통해 데이터를 실시간 동기화하여 평균 응답 속도를 52ms로 단축했습니다.
                     </div>
                 </div>
 
@@ -389,7 +389,7 @@
                     <span class="card-badge">Infrastructure</span>
                 </div>
                 <div class="card-desc">
-                    S3 직접 접근(1.2s) 대비 <strong>27ms</strong>로 응답 속도 개선. OAC를 적용하여 보안을 강화하고 전송 비용 절감.
+                    <strong>S3 저장소</strong>와 CloudFront(CDN)를 연동하여 이미지 로딩 속도를 S3 직접 접근(1.2s) 대비 <strong>27ms</strong>로 대폭 개선하고 OAC 보안을 적용했습니다.
                 </div>
             </div>
 
@@ -443,7 +443,8 @@
                 </div>
             </div>
 
-        </div> </main>
+        </div> 
+    </main>
 </div>
 
 <script>
@@ -457,11 +458,11 @@
         }
     };
 
-    // 1. 검색 성능
+    // 1. 검색 성능 (수정됨: 라벨 변경)
     new Chart(document.getElementById('chartSearch'), {
         type: 'bar',
         data: {
-            labels: ['MySQL LIKE', 'Full-Text', 'OpenSearch'],
+            labels: ['MySQL LIKE', 'Full-Text', 'Elasticsearch'],
             datasets: [{
                 data: [690, 302, 52],
                 backgroundColor: ['#333', '#444', '#00e0c7'],
