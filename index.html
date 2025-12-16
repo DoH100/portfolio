@@ -50,7 +50,7 @@
         /* 기술 스택 (이미지 그리드) */
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); /* 조금 더 넓게 */
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
             gap: 2rem;
             justify-items: center;
         }
@@ -73,7 +73,7 @@
             justify-content: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             border: 1px solid #333;
-            padding: 18px; /* 아이콘 내부 여백 */
+            padding: 18px;
             transition: border-color 0.3s;
         }
         .tech-item:hover .tech-icon-box { border-color: var(--accent); }
@@ -82,10 +82,10 @@
             width: 100%; 
             height: 100%; 
             object-fit: contain; 
-            filter: grayscale(20%); /* 약간 톤다운 */
+            filter: grayscale(20%);
             transition: filter 0.3s;
         }
-        .tech-item:hover .tech-icon-box img { filter: grayscale(0%); /* 호버시 원래 색상 */ }
+        .tech-item:hover .tech-icon-box img { filter: grayscale(0%); }
 
         .tech-name { font-size: 0.9rem; color: var(--text-sub); font-weight: 500; }
 
@@ -99,7 +99,6 @@
             position: relative;
             overflow: hidden;
         }
-        /* 장식용 배경 효과 */
         .project-header-card::after {
             content: ''; position: absolute; top: 0; right: 0; width: 100px; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(0, 224, 199, 0.05));
@@ -122,7 +121,7 @@
         }
         .links a:hover { background: var(--accent); color: #000; box-shadow: 0 0 10px var(--accent); }
 
-        /* 성과 그리드 (핵심) */
+        /* 성과 그리드 */
         .achievement-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -151,20 +150,30 @@
         }
         .card-title { font-size: 1.2rem; font-weight: 700; color: #fff; line-height: 1.3; }
         
-        .metric-box {
-            margin: 1.2rem 0;
+        /* 상세 설명 스타일 */
+        .problem-solution {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: #ccc;
+            line-height: 1.7;
+            background: #252525;
             padding: 1rem;
-            background: rgba(0, 224, 199, 0.05); /* 아주 연한 민트 배경 */
-            border-left: 3px solid var(--accent);
-            border-radius: 4px;
+            border-radius: 8px;
         }
-        .metric-value { font-size: 1.4rem; font-weight: 800; color: var(--accent); display: block; margin-bottom: 3px; }
-        .metric-label { font-size: 0.85rem; color: var(--text-sub); opacity: 0.8; }
+        .ps-label {
+            color: var(--accent);
+            font-weight: 700;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .ps-block { margin-bottom: 0.8rem; }
+        .ps-block:last-child { margin-bottom: 0; }
 
+        /* 일반 설명 스타일 */
         .card-desc { font-size: 0.95rem; color: #ccc; flex-grow: 1; word-break: keep-all; line-height: 1.6; }
 
         /* 차트 영역 */
-        .chart-area { height: 220px; margin-top: 1.5rem; }
+        .chart-area { height: 250px; margin-top: 1.5rem; }
         .span-2 { grid-column: span 2; } 
 
         /* 타임라인 */
@@ -212,51 +221,35 @@
         <h2>Tech Stack</h2>
         <div class="tech-grid">
             <div class="tech-item">
-                <div class="tech-icon-box">
-                    <img src="https://cdn.simpleicons.org/openjdk/white" alt="Java">
-                </div>
+                <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/openjdk/white" alt="Java"></div>
                 <span class="tech-name">Java 17</span>
             </div>
             <div class="tech-item">
-                <div class="tech-icon-box">
-                    <img src="https://cdn.simpleicons.org/springboot/6DB33F" alt="Spring Boot">
-                </div>
+                <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/springboot/6DB33F" alt="Spring Boot"></div>
                 <span class="tech-name">Spring Boot</span>
             </div>
             <div class="tech-item">
-                <div class="tech-icon-box">
-                    <img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL">
-                </div>
+                <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"></div>
                 <span class="tech-name">MySQL</span>
             </div>
             <div class="tech-item">
-                <div class="tech-icon-box">
-                    <img src="https://cdn.simpleicons.org/redis/FF4438" alt="Redis">
-                </div>
+                <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/redis/FF4438" alt="Redis"></div>
                 <span class="tech-name">Redis</span>
             </div>
             <div class="tech-item">
-                <div class="tech-icon-box">
-                    <img src="https://cdn.simpleicons.org/elasticsearch/005571" alt="Elasticsearch">
-                </div>
+                <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/elasticsearch/005571" alt="Elasticsearch"></div>
                 <span class="tech-name">Elasticsearch</span>
             </div>
             <div class="tech-item">
-                <div class="tech-icon-box">
-                    <img src="https://cdn.simpleicons.org/rabbitmq/FF6600" alt="RabbitMQ">
-                </div>
+                <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/rabbitmq/FF6600" alt="RabbitMQ"></div>
                 <span class="tech-name">RabbitMQ</span>
             </div>
             <div class="tech-item">
-                <div class="tech-icon-box">
-                    <img src="https://cdn.simpleicons.org/amazonaws/white" alt="AWS">
-                </div>
+                <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/amazonaws/white" alt="AWS"></div>
                 <span class="tech-name">AWS</span>
             </div>
             <div class="tech-item">
-                <div class="tech-icon-box">
-                    <img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker">
-                </div>
+                <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker"></div>
                 <span class="tech-name">Docker</span>
             </div>
         </div>
@@ -269,7 +262,7 @@
             <div class="project-title-row">
                 <div>
                     <h3>UP-PICK (중고 거래 플랫폼)</h3>
-                    <p style="color: var(--text-sub); margin-top: 5px;">2025.10.13 ~ 2025.11.19 (5주) | Backend Lead</p>
+                    <p style="color: var(--text-sub); margin-top: 5px;">2025.10.13 ~ 2025.11.19 (5주)</p>
                 </div>
                 <div class="links">
                     <a href="https://github.com/DoH100" target="_blank">GitHub</a>
@@ -289,29 +282,86 @@
                     <span class="card-badge">Search Performance</span>
                     <div class="card-title">검색 속도 13배 향상 (Elasticsearch)</div>
                 </div>
-                <div class="metric-box">
-                    <span class="metric-value">690ms → 52ms</span>
-                    <span class="metric-label">Avg Response Time</span>
+                
+                <div class="problem-solution">
+                    <div class="ps-block">
+                        <span class="ps-label">[문제상황]</span>
+                        MySQL LIKE 검색(690ms)은 Full Table Scan을 유발했고, 형태소 분석이 불가능했습니다. Full-Text Search(302ms) 또한 확장성 및 한글 처리에 한계가 있었습니다.
+                    </div>
+                    <div class="ps-block">
+                        <span class="ps-label">[해결방법]</span>
+                        Elasticsearch를 도입하여 평균 응답 시간을 690ms → 52ms로 약 13배 단축시키고, 정확도 높은 검색 환경을 구축했습니다.
+                    </div>
                 </div>
-                <div class="card-desc">
-                    MySQL LIKE 검색의 한계(Full Scan, 형태소 분석 불가)를 극복하기 위해 Elasticsearch를 도입했습니다. 한국어 검색 정확도와 속도를 동시에 확보했습니다.
-                </div>
+
                 <div class="chart-area">
                     <canvas id="chartSearch"></canvas>
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card span-2">
                 <div class="card-head">
                     <span class="card-badge">Database Stability</span>
                     <div class="card-title">DB 부하 800% → 30% 안정화</div>
                 </div>
-                <div class="metric-box">
-                    <span class="metric-value">CPU 800% → 30%</span>
-                    <span class="metric-label">Master DB Load</span>
+
+                <div class="problem-solution">
+                    <div class="ps-block">
+                        <span class="ps-label">[문제상황]</span>
+                        단일 DB 인스턴스에 읽기/쓰기 트래픽이 모두 집중되어, 피크 시간대 CPU 부하가 800%까지 급등하는 장애 위험이 있었습니다.
+                    </div>
+                    <div class="ps-block">
+                        <span class="ps-label">[해결방법]</span>
+                        Master/Slave Replication 아키텍처를 구축하여 읽기 트래픽을 Slave로 분산시켰습니다. 그 결과 Master DB의 CPU 부하를 30% 수준으로 안정화했습니다.
+                    </div>
                 </div>
-                <div class="card-desc">
-                    단일 DB에 집중된 트래픽을 <strong>Master/Slave Replication</strong>으로 분산하여 읽기 부하 문제를 근본적으로 해결했습니다.
+
+                <div class="chart-area">
+                    <canvas id="chartDBLoad"></canvas>
+                </div>
+            </div>
+
+             <div class="card span-2">
+                <div class="card-head">
+                    <span class="card-badge">High Traffic</span>
+                    <div class="card-title">입찰 TPS 1.5배 증가</div>
+                </div>
+
+                <div class="problem-solution">
+                    <div class="ps-block">
+                        <span class="ps-label">[문제상황]</span>
+                        실시간 입찰 시 조회/갱신 작업이 DB에 집중되어 CPU 피크(9% 이상)를 유발하고 전체적인 처리량(TPS)이 저하되었습니다.
+                    </div>
+                    <div class="ps-block">
+                        <span class="ps-label">[해결방법]</span>
+                        고빈도 입찰 데이터를 Redis(In-memory)에서 우선 처리하도록 분산했습니다. 입찰 처리량(TPS)이 1.5배 증가하고 CPU 피크 사용률은 50% 절감되었습니다.
+                    </div>
+                </div>
+
+                <div class="chart-area">
+                    <canvas id="chartTPS"></canvas>
+                </div>
+            </div>
+
+             <div class="card span-2">
+                <div class="card-head">
+                    <span class="card-badge">Query Tuning</span>
+                    <div class="card-title">쿼리 속도 70% 단축</div>
+                </div>
+
+                <div class="problem-solution">
+                    <div class="ps-block">
+                        <span class="ps-label">[문제상황]</span>
+                        경매 상태 및 입찰자 등 복합 조건 조회 시 Full Table Scan이 발생하여 평균 쿼리 응답 시간이 417.6ms로 지연되었습니다.
+                    </div>
+                    <div class="ps-block">
+                        <span class="ps-label">[해결방법]</span>
+                        조회 패턴을 분석하여 `last_bidder_id`, `status`, `end_at` 순서의 복합 키 인덱스를 적용, 응답 시간을 124.0ms로 단축했습니다.
+                    </div>
+                </div>
+
+                <div class="chart-area">
+                    <canvas id="chartQuery"></canvas>
                 </div>
             </div>
 
@@ -320,82 +370,38 @@
                     <span class="card-badge">Concurrency</span>
                     <div class="card-title">Virtual Thread 도입</div>
                 </div>
-                <div class="metric-box">
-                    <span class="metric-value">TPS 2.7x ▲ / Error 0%</span>
-                    <span class="metric-label">Throughput & Stability</span>
-                </div>
                 <div class="card-desc">
-                    스레드 경합으로 인한 응답 지연(P95 19.6초)을 해결하기 위해, 블로킹 I/O 처리에 효율적인 <strong>Java Virtual Thread</strong>를 적용했습니다.
+                    스레드 경합으로 인한 지연(19.6초) 해결. 블로킹 I/O 처리에 효율적인 Virtual Thread를 적용하여 TPS 2.7배 증가 및 에러율 0% 달성.
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-head">
                     <span class="card-badge">Async Processing</span>
-                    <div class="card-title">API 응답 36% 단축 (MQ)</div>
-                </div>
-                <div class="metric-box">
-                    <span class="metric-value">240ms → 153ms</span>
-                    <span class="metric-label">Avg Response Time</span>
+                    <div class="card-title">API 응답 36% 단축</div>
                 </div>
                 <div class="card-desc">
-                    입찰 후처리(알림, 정산) 로직을 <strong>RabbitMQ</strong>로 분리하여 비동기 처리함으로써 사용자가 느끼는 지연 시간을 최소화했습니다.
+                    입찰 후처리(알림, 정산)를 RabbitMQ로 비동기 처리하여 API 응답 시간을 240ms → 153ms로 단축.
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-head">
-                    <span class="card-badge">Caching Strategy</span>
+                    <span class="card-badge">Caching</span>
                     <div class="card-title">DB CPU 사용률 90% 감소</div>
                 </div>
-                <div class="metric-box">
-                    <span class="metric-value">-90% CPU Load</span>
-                    <span class="metric-label">By Redis Cache-Aside</span>
-                </div>
                 <div class="card-desc">
-                    반복적인 카테고리 조회 요청에 <strong>Redis Cache-Aside 패턴</strong>을 적용하여 불필요한 DB 접근을 획기적으로 줄였습니다.
+                    반복적인 카테고리 조회에 Redis Cache-Aside 패턴을 적용하여 DB 부하를 획기적으로 줄임.
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-head">
-                    <span class="card-badge">High Traffic</span>
-                    <div class="card-title">입찰 TPS 1.5배 증가</div>
-                </div>
-                <div class="metric-box">
-                    <span class="metric-value">TPS 1.5x ▲</span>
-                    <span class="metric-label">Redis In-memory Processing</span>
-                </div>
-                <div class="card-desc">
-                    고빈도 입찰 조회/갱신 작업을 DB 대신 <strong>Redis</strong>에서 직접 처리하여 DB 병목을 해소하고 처리량을 늘렸습니다.
-                </div>
-            </div>
-
-            <div class="card">
+             <div class="card">
                 <div class="card-head">
                     <span class="card-badge">Data Integrity</span>
                     <div class="card-title">동시 요청 성공률 100%</div>
                 </div>
-                <div class="metric-box">
-                    <span class="metric-value">Fail 70% → Success 100%</span>
-                    <span class="metric-label">5,000 Concurrent Requests</span>
-                </div>
                 <div class="card-desc">
-                    낙관적 락 실패 문제를 <strong>Redis 기반 원자적 연산</strong>으로 전환하여 조회수 증가 로직의 동시성 이슈를 해결했습니다.
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-head">
-                    <span class="card-badge">Query Tuning</span>
-                    <div class="card-title">쿼리 속도 70% 단축</div>
-                </div>
-                <div class="metric-box">
-                    <span class="metric-value">417ms → 124ms</span>
-                    <span class="metric-label">Composite Index</span>
-                </div>
-                <div class="card-desc">
-                    복합 조건 조회(입찰자+상태+시간)에 최적화된 <strong>복합 키 인덱스</strong>를 적용해 Full Scan을 제거했습니다.
+                    낙관적 락 실패(70%) 문제를 Redis 원자적 연산으로 전환하여 5,000회 동시 요청 테스트 성공.
                 </div>
             </div>
 
@@ -404,26 +410,18 @@
                     <span class="card-badge">Serverless</span>
                     <div class="card-title">Lambda Cold Start 해결</div>
                 </div>
-                <div class="metric-box">
-                    <span class="metric-value">-91.5% Execution Time</span>
-                    <span class="metric-label">SnapStart Applied</span>
-                </div>
                 <div class="card-desc">
-                    <strong>SnapStart</strong>로 JVM 워밍업을 적용하여 콜드 스타트 비용을 절감하고 실행 속도를 개선했습니다.
+                    SnapStart 적용으로 JVM 워밍업 시간을 단축하여 실행 시간을 91.5% 개선하고 비용 절감.
                 </div>
             </div>
 
              <div class="card">
                 <div class="card-head">
-                    <span class="card-badge">Batch Processing</span>
-                    <div class="card-title">Spring Batch 성능 최적화</div>
-                </div>
-                <div class="metric-box">
-                    <span class="metric-value">Chunk Size 100</span>
-                    <span class="metric-label">Optimal Transaction Size</span>
+                    <span class="card-badge">Batch</span>
+                    <div class="card-title">Spring Batch 최적화</div>
                 </div>
                 <div class="card-desc">
-                    MySQL 트랜잭션 부하를 최소화하는 최적의 <strong>청크 사이즈(100)</strong>를 테스트를 통해 도출하고 적용했습니다.
+                    트랜잭션 부하를 최소화하는 최적의 청크 사이즈(100)를 도출하여 배치 성능 개선.
                 </div>
             </div>
 
@@ -456,35 +454,86 @@
 </div>
 
 <script>
-    /* 차트: 검색 성능 */
-    const ctx = document.getElementById('chartSearch').getContext('2d');
-    new Chart(ctx, {
+    // 공통 차트 옵션
+    const commonOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+            y: { grid: { color: '#333' }, ticks: { color: '#888' } },
+            x: { grid: { display: false }, ticks: { color: '#ccc', font: { weight: 'bold' } } }
+        }
+    };
+
+    // 1. 검색 속도 차트
+    new Chart(document.getElementById('chartSearch'), {
         type: 'bar',
         data: {
             labels: ['MySQL LIKE', 'Full-Text', 'Elasticsearch'],
             datasets: [{
-                label: 'Response Time (ms)',
                 data: [690, 302, 52],
-                backgroundColor: ['#333', '#444', '#00e0c7'], /* 강조색만 민트 */
-                borderRadius: 4,
-                barThickness: 40
+                backgroundColor: ['#333', '#444', '#00e0c7'],
+                borderRadius: 4
             }]
         },
         options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-                y: { 
-                    grid: { color: '#333' }, 
-                    ticks: { color: '#888' },
-                    title: { display: true, text: 'ms', color: '#666' }
-                },
-                x: { 
-                    grid: { display: false }, 
-                    ticks: { color: '#ccc', font: { weight: 'bold' } } 
-                }
-            }
+            ...commonOptions,
+            plugins: { ...commonOptions.plugins, title: { display: true, text: '응답 시간 (ms, 낮을수록 좋음)', color: '#888', align: 'start' } }
+        }
+    });
+
+    // 2. DB 부하 차트
+    new Chart(document.getElementById('chartDBLoad'), {
+        type: 'bar',
+        data: {
+            labels: ['Before (Single)', 'After (Replication)'],
+            datasets: [{
+                data: [800, 30],
+                backgroundColor: ['#ef476f', '#00e0c7'],
+                borderRadius: 4,
+                barThickness: 60
+            }]
+        },
+        options: {
+            ...commonOptions,
+            plugins: { ...commonOptions.plugins, title: { display: true, text: 'CPU 부하 (%)', color: '#888', align: 'start' } }
+        }
+    });
+
+    // 3. TPS 차트
+    new Chart(document.getElementById('chartTPS'), {
+        type: 'bar',
+        data: {
+            labels: ['Before (DB)', 'After (Redis)'],
+            datasets: [{
+                data: [100, 150], // 1.5배 예시 데이터
+                backgroundColor: ['#333', '#00e0c7'],
+                borderRadius: 4,
+                barThickness: 60
+            }]
+        },
+        options: {
+            ...commonOptions,
+            plugins: { ...commonOptions.plugins, title: { display: true, text: '상대적 처리량 (TPS)', color: '#888', align: 'start' } },
+            scales: { ...commonOptions.scales, y: { display: false } } // Y축 숫자 숨김 (상대 비교 강조)
+        }
+    });
+
+    // 4. 쿼리 속도 차트
+    new Chart(document.getElementById('chartQuery'), {
+        type: 'bar',
+        data: {
+            labels: ['Before (Full Scan)', 'After (Index)'],
+            datasets: [{
+                data: [417.6, 124.0],
+                backgroundColor: ['#ef476f', '#00e0c7'],
+                borderRadius: 4,
+                barThickness: 60
+            }]
+        },
+        options: {
+            ...commonOptions,
+            plugins: { ...commonOptions.plugins, title: { display: true, text: '응답 시간 (ms)', color: '#888', align: 'start' } }
         }
     });
 </script>
