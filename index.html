@@ -143,6 +143,44 @@
         
         .project-desc { color: #ccc; border-top: 1px solid #333; padding-top: 1.5rem; margin-top: 1rem; }
 
+        /* === 아키텍처 다이어그램 섹션 (NEW) === */
+        .architecture-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .arch-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.5rem;
+        }
+        .arch-header h3 { font-size: 1.3rem; color: #fff; font-weight: 700; }
+        .arch-header::before {
+            content: ''; display: block; width: 4px; height: 24px; background: var(--accent);
+        }
+        .arch-img-container {
+            width: 100%;
+            background: #252525;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .arch-img-container img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
         /* === 기술 역량 섹션 (하단 배치용 스타일) === */
         .section-separator {
             border-top: 1px solid #333;
@@ -352,6 +390,15 @@
                 흥정 없는 공정한 거래를 위한 <strong>실시간 경매형 중고거래 플랫폼</strong>입니다. <br>
                 MSA 아키텍처와 이벤트 기반 설계를 도입하여 확장성을 확보했으며, 대규모 트래픽 상황에서의 고가용성과 비용 효율성에 집중했습니다.
             </p>
+        </div>
+
+        <div class="architecture-section">
+            <div class="arch-header">
+                <h3>System Architecture</h3>
+            </div>
+            <div class="arch-img-container">
+                <img src="https://placehold.co/1200x600/252525/808080?text=Architecture+Image+Place+Here&font=roboto" alt="System Architecture">
+            </div>
         </div>
 
         <div class="achievement-grid">
