@@ -7,251 +7,223 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
-        /* 폰트 및 기본 스타일 설정 */
+        /* 기본 설정 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* 다크 네이비 스타일 기반 */
         body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #000000; /* 더 진한 블랙 배경 */
-            color: #f0f0f0; /* 밝은 회색 텍스트 */
-            line-height: 1.8;
+            background: #0d1117; /* GitHub Dark Mode 배경 */
+            color: #c9d1d9; /* 기본 텍스트 색상 */
+            line-height: 1.6;
             transition: background 0.3s, color 0.3s;
         }
 
         a {
-            color: #4dd0e1; /* 메인 강조색 (민트/아쿠아) */
+            color: #39c0c8; /* 메인 강조색 (민트) */
             text-decoration: none;
             transition: color 0.3s;
         }
 
         a:hover {
             text-decoration: underline;
-            color: #84ffff; /* 호버 시 더 밝은 색 */
+            color: #55e0e8; 
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1050px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
-        /* 헤더/인트로 섹션 */
+        /* 헤더 및 인트로 */
         header {
-            padding: 5rem 0 3rem 0;
-            border-bottom: 1px solid #1a1a1a;
-        }
-
-        .greeting {
-            font-size: 1.6rem;
-            font-weight: 400;
-            color: #888;
-            margin-bottom: 1rem;
-            letter-spacing: 0.5px;
-        }
-
-        .greeting span {
-            color: #4dd0e1; /* 강조색 */
-            font-weight: 600;
-        }
-
-        .intro {
-            margin-bottom: 3rem;
+            padding: 6rem 0 3rem 0;
+            text-align: center;
         }
 
         .intro h1 {
-            font-size: 3rem;
-            font-weight: 800;
+            font-size: 3.5rem;
+            font-weight: 900;
             margin-bottom: 0.5rem;
             letter-spacing: -2px;
-            color: #f0f0f0;
+            color: #f0f6fc;
         }
 
         .intro .tagline {
-            font-size: 1.1rem;
-            color: #b0b0b0;
-            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            color: #8b949e;
+            margin-bottom: 1.5rem;
             font-weight: 500;
         }
 
         .intro p {
+            max-width: 800px;
+            margin: 0.5rem auto 3rem auto;
             font-size: 1rem;
-            color: #c0c0c0;
-            line-height: 1.8;
-        }
-
-        /* 섹션 구분 */
-        section {
-            margin: 4rem 0;
+            color: #c9d1d9;
+            line-height: 1.7;
+            border-bottom: 1px solid #21262d;
             padding-bottom: 3rem;
-            border-bottom: 1px solid #1a1a1a;
         }
-
-        section:last-of-type {
-            border-bottom: none;
+        
+        /* 섹션 제목 스타일 */
+        section {
+            padding: 3rem 0 0rem 0;
+            margin-bottom: 4rem;
         }
 
         h2 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 2.5rem;
-            margin-top: 3rem;
-            color: #4dd0e1;
-            border-left: 4px solid #4dd0e1;
-            padding-left: 1rem;
-            line-height: 1;
-        }
-
-        h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-            margin-top: 1.5rem;
-        }
-
-        h4 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #f0f0f0;
-            margin: 2rem 0 1.5rem 0;
-        }
-
-        /* 프로젝트 레이아웃 */
-        .project-layout {
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 4rem;
             margin-bottom: 3rem;
-            padding: 2rem 0;
+            color: #f0f6fc;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: #39c0c8;
+            margin: 0.8rem auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* 프로젝트 섹션 */
+        .project-card {
+            background: #0d1117; 
+            border: 1px solid #21262d;
             border-radius: 8px;
-            background: #0a0a0a;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            padding: 2.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
 
-        .project-sidebar {
-            padding-left: 2rem;
+        .project-header {
             display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            border-right: 1px solid #1a1a1a;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
         }
 
-        .project-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: #f0f0f0;
-        }
-
-        .project-badge-icon {
+        .project-details h3 {
             font-size: 1.5rem;
+            font-weight: 800;
+            color: #f0f6fc;
+            margin-top: 0;
         }
 
-        .project-title-sidebar {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #f0f0f0;
+        .project-details p {
+            font-size: 0.9rem;
+            color: #8b949e;
             margin-bottom: 0.5rem;
         }
 
         .project-period {
             font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 1rem;
+            color: #58a6ff; /* 기간 강조 */
         }
 
         .project-tech-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.6rem;
+            margin-top: 1rem;
         }
 
         .tech-tag {
-            display: inline-block;
-            background: #1a1a1a;
-            padding: 0.4rem 0.9rem;
-            border-radius: 20px;
+            background: #21262d; 
+            padding: 0.3rem 0.8rem;
+            border-radius: 16px;
             font-size: 0.8rem;
-            color: #84ffff; /* 밝은 강조색 */
-            border: 1px solid #2a2a2a;
+            color: #39c0c8;
+            border: 1px solid #30363d;
             font-weight: 500;
         }
 
-        .project-content {
-            padding-right: 2rem;
-            /* border-left: 3px solid #4dd0e1; */
-            /* padding-left: 1.5rem; */
+        .project-description {
+            font-size: 1rem;
+            color: #c9d1d9;
+            margin-bottom: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed #21262d;
         }
 
-        .project-content h3 {
-            color: #f0f0f0;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #1a1a1a;
-            padding-bottom: 0.5rem;
+        /* 성과 섹션 - 카드 형태 */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
         .achievement-item {
-            margin-bottom: 3rem;
             padding: 2rem;
-            background: #101010; /* 어두운 배경색 */
+            background: #161b22; /* 살짝 밝은 배경 */
             border-radius: 8px;
-            border-left: 4px solid #4dd0e1; /* 강조색 왼쪽 테두리 */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .achievement-item.text-only {
-            padding-bottom: 1.5rem;
+            border-top: 3px solid #39c0c8;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
         }
 
         .achievement-title {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            color: #4dd0e1;
-            margin-bottom: 0.5rem;
+            color: #55e0e8;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.5px;
         }
 
         .achievement-metric {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            color: #fff;
+            color: #f0f6fc;
             margin-bottom: 1.5rem;
+        }
+
+        .achievement-body {
+            font-size: 0.95rem;
+            color: #c9d1d9;
+            line-height: 1.7;
+        }
+
+        .achievement-item.chart-card {
+            grid-column: span 2; /* 차트 항목은 2칸 차지 */
+        }
+
+        .achievement-item.text-only {
+            border-top: 3px solid #8b949e; /* 텍스트 전용은 색상 변경 */
         }
 
         .chart-container {
             position: relative;
-            height: 300px;
+            height: 350px;
             margin-top: 1.5rem;
-            background: #1a1a1a;
+            background: #101217;
             border-radius: 4px;
             padding: 1rem;
         }
 
-        .achievement {
-            font-size: 0.95rem;
-            color: #b0b0b0;
-            margin-bottom: 1.2rem;
-            line-height: 1.6;
-        }
-
-        .achievement::before {
-            content: '✓ ';
-            color: #4dd0e1;
-            font-weight: 700;
-            margin-right: 0.5rem;
-        }
-
         /* 기술 역량 섹션 */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
         .skill-category {
-            margin-bottom: 2rem;
             padding: 1.5rem;
-            background: #0a0a0a;
-            border-left: 2px solid #2a2a2a;
-            border-radius: 4px;
+            background: #161b22;
+            border-radius: 6px;
+            border: 1px solid #21262d;
         }
 
         .skill-category h4 {
@@ -259,37 +231,56 @@
             font-weight: 700;
             margin-bottom: 0.8rem;
             text-transform: uppercase;
-            color: #4dd0e1;
+            color: #39c0c8;
             letter-spacing: 1px;
             margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed #21262d;
         }
 
         .skill-content {
             font-size: 0.95rem;
-            color: #c0c0c0;
+            color: #c9d1d9;
             line-height: 1.7;
         }
 
         .skill-content strong {
-            color: #fff;
+            color: #f0f6fc;
             font-weight: 700;
         }
 
         /* 타임라인 섹션 */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #21262d;
+        }
+
         .timeline-item {
             margin-bottom: 2rem;
-            border-left: 2px solid #3a3a3a;
-            padding-left: 1.5rem;
+            padding-left: 20px;
             position: relative;
         }
 
         .timeline-item::before {
             content: '●';
             position: absolute;
-            left: -10px;
-            top: 0;
-            color: #4dd0e1;
+            left: -8px;
+            top: 4px;
+            color: #39c0c8;
             font-size: 1rem;
+            background: #0d1117;
+            border-radius: 50%;
+            padding: 0 2px;
         }
 
         .timeline-header {
@@ -301,19 +292,49 @@
 
         .timeline-header h3 {
             margin-top: 0;
-            color: #f0f0f0;
+            color: #f0f6fc;
+            font-size: 1.15rem;
         }
 
         .period {
             font-size: 0.9rem;
-            color: #888;
+            color: #8b949e;
             font-weight: 400;
         }
 
         .timeline-desc {
             font-size: 0.95rem;
-            color: #c0c0c0;
+            color: #c9d1d9;
             line-height: 1.7;
+        }
+
+        /* 결론 섹션 */
+        .focus-points {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #161b22;
+            border-radius: 8px;
+            border: 1px solid #39c0c8;
+        }
+
+        .achievement {
+            font-size: 1rem;
+            color: #c9d1d9;
+            margin-bottom: 1.2rem;
+            line-height: 1.7;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .achievement::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #39c0c8;
+            font-weight: 700;
+            font-size: 0.8rem;
         }
 
         /* 푸터 */
@@ -321,8 +342,8 @@
             padding: 3rem 0;
             text-align: center;
             font-size: 0.9rem;
-            color: #666;
-            border-top: 1px solid #1a1a1a;
+            color: #8b949e;
+            border-top: 1px solid #21262d;
             margin-top: 3rem;
         }
 
@@ -333,34 +354,17 @@
 
         .link-group a {
             margin: 0 1rem;
-            color: #4dd0e1;
+            color: #58a6ff; /* 링크 색상 변경 */
         }
 
         /* 반응형 디자인 */
-        @media (max-width: 768px) {
-            .project-layout {
+        @media (max-width: 900px) {
+            .achievements-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
-                padding: 1.5rem;
             }
 
-            .project-sidebar {
-                padding-left: 0;
-                border-right: none;
-                padding-bottom: 1.5rem;
-                border-bottom: 1px solid #1a1a1a;
-            }
-
-            .project-content {
-                padding-right: 0;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            .intro h1 {
-                font-size: 2.5rem;
+            .achievement-item.chart-card {
+                grid-column: span 1;
             }
         }
 
@@ -369,12 +373,20 @@
                 padding: 0 1rem;
             }
 
+            header {
+                padding: 4rem 0 2rem 0;
+            }
+            
             .intro h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
-            .greeting {
-                font-size: 1.2rem;
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .project-card {
+                padding: 1.5rem;
             }
 
             .chart-container {
@@ -386,12 +398,9 @@
 <body>
     <div class="container">
         <header>
-            <div class="greeting">
-                안녕하세요, <span id="greetingName">백도현</span> 입니다
-            </div>
             <div class="intro">
                 <h1>백도현 🧑‍💻</h1>
-                <div class="tagline">비용 효율과 성능을 최우선으로 고려하는 백엔드 개발자</div>
+                <div class="tagline">Backend Developer | 비용 효율과 성능을 최우선으로</div>
                 <p>
                     비용 효율과 성능을 최우선으로 고려하며 서비스 성장을 이끌고, 예상치 못한 문제에 깊이 몰입하여 해결하는 백엔드 개발자입니다.
                     UP-PICK 프로젝트에서 ElasticSearch 도입, Master/Slave Replication 구축, Virtual Thread 적용 등을 통해 응답 속도 및 시스템 안정성을 확보했습니다.
@@ -401,195 +410,181 @@
         </header>
 
         <main>
-            <section>
-                <h2>프로젝트 🛠️</h2>
+            <section id="projects">
+                <h2>프로젝트 성과 분석: UP-PICK</h2>
 
-                <div class="project-layout">
-                    <div class="project-sidebar">
-                        <div>
-                            <div class="project-badge">
-                                <span class="project-badge-icon">🎯</span>
-                                <span class="project-title-sidebar">UP-PICK - 중고 거래 플랫폼</span>
-                            </div>
-                            <div class="project-period">2025.10.13 ~ 2025.11.19 (5주)</div>
-                            <div class="project-tech-tags">
-                                <span class="tech-tag">JAVA21</span>
-                                <span class="tech-tag">Spring Boot</span>
-                                <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">Redis</span>
-                                <span class="tech-tag">Elasticsearch</span>
-                                <span class="tech-tag">RabbitMQ</span>
-                                <span class="tech-tag">AWS</span>
-                                <span class="tech-tag">Docker</span>
-                            </div>
-                            <div class="link-group" style="margin-top: 2rem; text-align: left;">
-                                <a href="https://github.com/DoH100" target="_blank">GitHub</a>
-                                <a href="#">Portfolio</a>
-                            </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-details">
+                            <h3>🎯 UP-PICK - 중고 거래 플랫폼</h3>
+                            <p class="project-period">2025.10.13 ~ 2025.11.19 (5주)</p>
+                        </div>
+                        <div class="link-group" style="text-align: right;">
+                            <a href="https://github.com/DoH100" target="_blank">GitHub</a>
+                            <a href="#">Portfolio</a>
                         </div>
                     </div>
+                    
+                    <div class="project-tech-tags">
+                        <span class="tech-tag">JAVA21</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Elasticsearch</span>
+                        <span class="tech-tag">RabbitMQ</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
 
-                    <div class="project-content">
-                        <h3>성능 최적화 및 안정성 향상 주요 성과</h3>
-                        <p style="font-size: 0.95rem; color: #b0b0b0; margin-bottom: 2rem; line-height: 1.7; margin-top: 0.5rem;">
-                            흥정 없는 공정한 거래 환경 제공을 목표로, 고가용성 및 성능 향상을 위한 아키텍처 설계와 구현에 집중했습니다.
-                        </p>
+                    <p class="project-description">
+                        흥정 없는 공정한 거래 환경 제공을 목표로, 고가용성 및 성능 향상을 위한 아키텍처 설계와 구현에 집중했습니다.
+                    </p>
 
-                        <h4>주요 성과 요약</h4>
-
-                        <div class="achievement-item">
-                            <div class="achievement-title">🔍 검색 시스템 성능 13배 향상 (MySQL → ElasticSearch)</div>
+                    <div class="achievements-grid">
+                        
+                        <div class="achievement-item chart-card">
+                            <div class="achievement-title">🔍 ElasticSearch 도입: 검색 성능 13배 향상</div>
                             <div class="achievement-metric">690ms → 52ms</div>
-                            <p style="font-size: 0.9rem; color: #b0b0b0; margin-bottom: 1rem;">
-                                MySQL `LIKE` 검색의 Full Table Scan과 형태소 분석 한계 문제를 해결하기 위해 ElasticSearch를 도입했습니다.
-                                평균 응답 시간을 약 13배 향상시키고, 한국어 검색의 정확도와 확장성을 확보했습니다.
-                            </p>
+                            <div class="achievement-body">
+                                MySQL `LIKE` 검색의 Full Table Scan 문제를 해결하기 위해 ElasticSearch를 도입하고 한국어 형태소 분석을 적용했습니다.
+                                **평균 응답 시간을 약 13배 향상**시키고, 검색 정확도와 확장성을 확보했습니다. 
+                            </div>
                             <div class="chart-container">
                                 <canvas id="searchChart"></canvas>
                             </div>
                         </div>
 
                         <div class="achievement-item">
-                            <div class="achievement-title">⚡ Master/Slave Replication 구축 (DB 부하 분산)</div>
+                            <div class="achievement-title">⚡ Master/Slave Replication 구축</div>
                             <div class="achievement-metric">Master CPU 800% → 30%</div>
-                            <p style="font-size: 0.9rem; color: #b0b0b0; margin-bottom: 1rem;">
-                                단일 DB 인스턴스에 읽기/쓰기 트래픽 집중으로 CPU 부하가 800%까지 급등하는 문제를 해결했습니다.
-                                Master/Slave 복제 적용  을 통해 읽기 트래픽을 Slave로 분산하여, Master DB의 CPU 부하를 30%로 안정화했습니다.
-                            </p>
-                            <div class="chart-container">
+                            <div class="achievement-body">
+                                단일 DB 인스턴스에 읽기/쓰기 트래픽 집중으로 발생했던 CPU 부하(800% 급등) 문제를 해결했습니다.
+                                Master/Slave 복제  를 적용하여 읽기 트래픽을 Slave로 분산, Master DB의 CPU 부하를 **30%로 안정화**했습니다.
+                            </div>
+                            <div class="chart-container" style="height: 180px;">
                                 <canvas id="replicaChart"></canvas>
                             </div>
                         </div>
 
-                        <div class="achievement-item text-only">
-                            <div class="achievement-title">🧵 Java Virtual Thread 도입 (동시 처리량 극대화)</div>
-                            <div class="achievement-metric">평균 TPS 약 2.7배 증가</div>
-                            <p style="font-size: 0.9rem; color: #b0b0b0;">
-                                동시 접속자 증가 시 스레드 경합으로 응답 지연(P95 19.6초) 및 에러율(1.07%)이 발생했습니다.
-                                Virtual Thread  를 적용하여 블로킹 I/O를 효율적으로 처리하고, 평균 응답 시간을 99.4% 개선하여 에러율 0.00%로 안정화했습니다.
-                            </p>
-                        </div>
-
                         <div class="achievement-item">
-                            <div class="achievement-title">📨 Message Queue 도입 (입찰 API 응답 속도 개선)</div>
-                            <div class="achievement-metric">240ms → 153ms (약 36% 단축)</div>
-                            <p style="font-size: 0.9rem; color: #b0b0b0; margin-bottom: 1rem;">
-                                입찰 후처리(정산, 알림)를 동기적으로 진행하여 입찰 API 응답 시간이 240ms로 길었던 문제를 해결했습니다.
-                                RabbitMQ  를 도입하여 핵심 로직과 후처리 로직을 분리, 평균 응답 시간을 약 36% 단축했습니다.
-                            </p>
-                            <div class="chart-container">
+                            <div class="achievement-title">📨 RabbitMQ 도입: 입찰 API 응답 속도 개선</div>
+                            <div class="achievement-metric">240ms → 153ms (36% 단축)</div>
+                            <div class="achievement-body">
+                                입찰 후처리(정산, 알림)를 비동기로 전환하기 위해 RabbitMQ를 도입  했습니다. 핵심 로직과 후처리 로직을 분리하여 입찰 API의 **평균 응답 시간을 36% 단축**했습니다.
+                            </div>
+                            <div class="chart-container" style="height: 180px;">
                                 <canvas id="mqChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-item text-only">
+                            <div class="achievement-title">🧵 Java Virtual Thread 적용</div>
+                            <div class="achievement-metric">P95 응답시간 19.6초 → 110ms (99.4% 개선)</div>
+                            <div class="achievement-body">
+                                동시 접속 증가 시 발생했던 스레드 경합으로 인한 응답 지연 문제를 해결하기 위해 Virtual Thread  를 적용했습니다. 블로킹 I/O를 효율적으로 처리하여 평균 TPS **약 2.7배 증가** 및 에러율 0.00%를 달성했습니다.
                             </div>
                         </div>
 
                         <div class="achievement-item text-only">
-                            <div class="achievement-title">💾 Redis 활용 (고빈도/동시성 처리)</div>
-                            <p style="font-size: 0.9rem; color: #b0b0b0;">
-                                * **입찰 부하 분산:** 실시간 입찰 조회/갱신 작업을 Redis로 분산하여, CPU 피크 사용률 약 50% 절감 및 TPS 약 1.5배 증가를 확인했습니다.
-                                * **조회수 동시성 해결:** 낙관적 락 사용 시 발생했던 조회수 동시성 실패율 70% 이상 문제를 Redis 기반 In-memory 처리로 전환하여, 5,000회 동시 요청에서 100% 성공률을 달성했습니다.
-                                * **카테고리 조회:** 반복적인 카테고리 조회 요청에 Redis 캐싱 레이어  를 적용하고 Cache-Aside 패턴을 적용하여 MySQL 서버 CPU 사용률을 약 80~90% 감소시켰습니다.
-                            </p>
-                        </div>
-
-                        <div class="achievement-item text-only">
-                            <div class="achievement-title">⚙️ Serverless 환경 최적화 (Lambda SnapStart, Fargate ARM64)</div>
-                            <p style="font-size: 0.9rem; color: #b0b0b0;">
-                                * **Lambda SnapStart:** Java 기반 Lambda의 콜드스타트(47.83ms) 문제를 해결하기 위해 SnapStart를 적용, 평균 실행 시간을 91.5% 단축(4.06ms)하고 과금 비용을 90.8% 절감했습니다.
-                                * **Fargate ARM64 전환:** Fargate를 ARM64 아키텍처로 전환하여 응답 시간을 20% 개선하고, 실행 비용을 20% 절감하여 비용 대비 성능 효율을 56% 향상시켰습니다.
-                            </p>
-                        </div>
-
-                        <div class="achievement-item text-only">
-                            <div class="achievement-title">💡 쿼리 튜닝 (복합 키 인덱스 적용)</div>
-                            <p style="font-size: 0.9rem; color: #b0b0b0;">
-                                복합 조건 조회 시 Full Table Scan으로 평균 쿼리 응답 시간 417.6ms가 발생했습니다.
-                                `last_bidder_id`, `status`, `end_at` 순서의 복합 키 인덱스를 적용하여 평균 쿼리 응답 시간을 약 70% 단축(417.6ms → 124.0ms)했습니다.
-                            </p>
+                            <div class="achievement-title">💾 Redis 활용: 캐싱 및 동시성 해결</div>
+                            <div class="achievement-metric">CPU 피크 50% 절감, 동시 요청 100% 성공</div>
+                            <div class="achievement-body">
+                                <ul>
+                                    <li>**입찰 부하 분산:** 실시간 입찰 조회/갱신을 Redis로 분산하여 DB CPU 피크 사용률 약 50% 절감.</li>
+                                    <li>**조회수 동시성 해결:** 낙관적 락 실패율(70%) 문제를 Redis In-memory 처리로 전환하여 5,000회 동시 요청에서 **100% 성공률** 달성.</li>
+                                    <li>**카테고리 캐싱:** Cache-Aside 패턴  을 적용하여 반복적인 카테고리 조회 요청으로 인한 MySQL CPU 사용률 약 80~90% 감소.</li>
+                                </ul>
+                            </div>
                         </div>
 
                     </div>
                 </div>
             </section>
 
-            <section>
-                <h2>기술 역량 📚</h2>
+            <section id="skills">
+                <h2>핵심 기술 역량</h2>
 
-                <div class="skill-category">
-                    <h4>Language & Framework</h4>
-                    <div class="skill-content">
-                        <strong>Java (JAVA17/21)</strong> • <strong>Spring Boot / Spring Data JPA</strong><br>
-                        Java와 Spring Boot를 기반으로 SOLID 원칙과 디자인 패턴을 고려한 백엔드 코드를 작성합니다. JPA/Hibernate를 활용한 쿼리 최적화 경험이 있습니다.
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Language & Framework</h4>
+                        <div class="skill-content">
+                            <strong>Java (JAVA17/21)</strong>, **Spring Boot**, **Spring Data JPA**<br>
+                            SOLID 원칙과 디자인 패턴을 고려한 백엔드 코드를 작성하며, JPA/Hibernate를 활용한 쿼리 최적화에 능숙합니다.
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Database & Caching & MQ</h4>
+                        <div class="skill-content">
+                            **MySQL**, **Redis**, **Elasticsearch**, **RabbitMQ**<br>
+                            Master/Slave 복제 및 인덱싱을 통한 DB 튜닝 경험. Redis 분산 락, 캐싱(Cache-Aside), RabbitMQ 비동기 처리 구현 경험.
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Infrastructure & Cloud & DevOps</h4>
+                        <div class="skill-content">
+                            **AWS (ECS Fargate ARM64, Lambda SnapStart)**, **Docker**<br>
+                            비용 효율적인 Serverless 환경 최적화(SnapStart, ARM64 전환), 컨테이너 환경 배포 및 성능 모니터링 경험.
+                        </div>
                     </div>
                 </div>
+            </section>
+            
+            <section id="education">
+                <h2>교육 & 활동</h2>
 
-                <div class="skill-category">
-                    <h4>Database & Caching & Message Queue</h4>
-                    <div class="skill-content">
-                        <strong>MySQL</strong> • <strong>Redis</strong> • <strong>Elasticsearch</strong> • <strong>RabbitMQ</strong><br>
-                        MySQL Master/Slave Replication 및 인덱싱을 통한 DB 튜닝 경험이 있으며, Redis를 활용한 캐싱(Cache-Aside), 분산 락, RabbitMQ를 활용한 비동기 처리 아키텍처를 구현할 수 있습니다.
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <h3>스파르타 스프링 백엔드 8기 과정 수료</h3>
+                            <span class="period">2025.06 ~ 2025.11</span>
+                        </div>
+                        <div class="timeline-desc">
+                            Java/Spring Boot 기반 웹 애플리케이션 개발 전반 학습. REST API 설계, JWT 인증·인가, JPA/Hibernate 등 실무 핵심 기술 실습.
+                        </div>
                     </div>
-                </div>
-
-                <div class="skill-category">
-                    <h4>Infrastructure & Cloud & DevOps</h4>
-                    <div class="skill-content">
-                        <strong>AWS (EC2, Fargate, Lambda, CloudFront)</strong> • <strong>Docker</strong> • <strong>Linux</strong><br>
-                        ECS Fargate (ARM64) 기반 컨테이너 환경 배포 및 운영, Lambda (SnapStart), CloudFront를 활용한 정적 파일 최적화 경험이 있으며, 성능 모니터링 및 비용 효율적인 인프라 구성을 고려합니다.
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <h3>동의대학교 컴퓨터 공학과</h3>
+                            <span class="period">2020.03 ~</span>
+                        </div>
+                        <div class="timeline-desc">
+                            컴퓨터 과학 기초 지식 및 알고리즘, 자료구조 등의 핵심 이론 학습.
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section>
-                <h2>교육 & 활동 🎓</h2>
+            <section id="focus">
+                <h2>백도현의 핵심 가치</h2>
 
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <h3>스파르타 스프링 백엔드 8기 과정 수료</h3>
-                        <span class="period">2025.06 ~ 2025.11</span>
-                    </div>
-                    <div class="timeline-desc">
-                        Java와 Spring Boot를 기반으로 한 백엔드 웹 애플리케이션 개발 전반을 학습.
-                        REST API 설계 및 구현, JWT 기반 인증·인가 처리, JPA/Hibernate 활용 등 실무 환경에서 활용되는 핵심 기술을 집중적으로 실습했습니다.
-                    </div>
+                <div class="focus-points">
+                    <div class="achievement">▶ **성능과 안정성 우선:** 대규모 트래픽 환경에서 견고하게 확장되는 시스템 설계를 위해 성능 최적화와 아키텍처 안정성에 집중합니다.</div>
+                    
+                    <div class="achievement">▶ **비용 효율적 설계:** 단순한 기능 구현을 넘어, AWS 리소스 최적화(ARM64, SnapStart) 등 비용 효율을 고려한 설계를 통해 서비스 성장을 이끌었습니다.</div>
+                    
+                    <div class="achievement">▶ **명확한 소통과 설계:** 명확하고 읽기 쉬운 코드, 이유 있는 설계로 동료들과 생산적인 협업을 지향합니다.</div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <h3>동의대학교 컴퓨터 공학과</h3>
-                        <span class="period">2020.03 ~</span>
-                    </div>
-                    <div class="timeline-desc">
-                        컴퓨터 과학 전반에 걸친 기초 지식 및 알고리즘, 자료구조 등의 핵심 이론을 학습했습니다.
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h2>그래서 저는요 ✨</h2>
-
-                <div class="achievement">🎯 **성능 최적화와 안정성 향상에 집중**하는 개발자입니다. 단순히 작동하는 코드가 아닌, 대규모 트래픽 환경에서 견고하게 확장되는 시스템 설계를 추구합니다.</div>
-
-                <div class="achievement">⚡ **비용 효율과 성능을 최우선**으로 고려하며 서비스의 성장을 이끌고, 예상치 못한 문제에 깊이 몰입하여 해결합니다.</div>
-
-                <div class="achievement">💻 코드로 대화하는 것을 좋아합니다. 명확하고 읽기 쉬운 코드, 그리고 이유 있는 설계로 동료에게 영감을 주는 개발자가 되고 싶습니다.</div>
             </section>
         </main>
 
         <footer>
             <div class="link-group">
-                <a href="https://github.com/DoH100" target="_blank">GitHub</a>
-                <a href="mailto:ehgus66648@gmail.com">Email (ehgus66648@gmail.com)</a>
+                <a href="https://github.com/DoH100" target="_blank">GitHub</a> | 
+                <a href="mailto:ehgus66648@gmail.com">Email (ehgus66648@gmail.com)</a> | 
                 <a href="tel:01025916067">Phone (010-2591-6067)</a>
             </div>
-            <p style="margin-top: 1rem;">&copy; 2025 Baek Do Hyeon. All rights reserved.</p>
+            <p style="margin-top: 1rem;">&copy; 2025 Baek Do Hyeon. Built with Clean & Minimalistic Tech Style.</p>
         </footer>
     </div>
 
     <script>
+        // Chart.js 스타일 설정
+        Chart.defaults.color = '#c9d1d9';
+        Chart.defaults.borderColor = '#21262d';
 
-        Chart.defaults.color = '#b0b0b0';
-        Chart.defaults.borderColor = '#1a1a1a'; /* 차트 구분선 색상 변경 */
-
-        // 검색 시스템 성능 차트
+        // 1. 검색 시스템 성능 차트
         new Chart(document.getElementById('searchChart'), {
             type: 'bar',
             data: {
@@ -597,8 +592,8 @@
                 datasets: [{
                     label: '응답시간 (ms)',
                     data: [690, 302, 52],
-                    backgroundColor: ['#ef5350', '#ffa726', '#4dd0e1'], /* 강조색 변경 */
-                    borderRadius: 6, /* 막대 모서리 둥글게 */
+                    backgroundColor: ['#ef476f', '#ffd166', '#39c0c8'], /* 색상 변경 */
+                    borderRadius: 6,
                     borderSkipped: false
                 }]
             },
@@ -609,24 +604,15 @@
                 scales: {
                     y: { 
                         beginAtZero: true, 
-                        grid: { color: '#1a1a1a' },
-                        title: { display: true, text: '응답시간 (ms)', color: '#b0b0b0' }
+                        grid: { color: '#21262d' },
+                        ticks: { color: '#8b949e' }
                     },
-                    x: { grid: { display: false } }
+                    x: { grid: { display: false }, ticks: { color: '#8b949e' } }
                 }
-            },
-            plugins: [{
-                id: 'barThickness',
-                afterDatasetsDraw(chart) {
-                    chart.data.datasets.forEach(dataset => {
-                        dataset.barPercentage = 0.6;
-                        dataset.categoryPercentage = 0.7;
-                    });
-                }
-            }]
+            }
         });
 
-        // Master/Slave Replication 차트
+        // 2. Master/Slave Replication 차트
         new Chart(document.getElementById('replicaChart'), {
             type: 'bar',
             data: {
@@ -634,7 +620,7 @@
                 datasets: [{
                     label: 'CPU 부하 (%)',
                     data: [800, 30],
-                    backgroundColor: ['#ef5350', '#4dd0e1'], /* 강조색 변경 */
+                    backgroundColor: ['#ef476f', '#39c0c8'], /* 색상 변경 */
                     borderRadius: 6,
                     borderSkipped: false
                 }]
@@ -646,15 +632,16 @@
                 scales: {
                     y: { 
                         beginAtZero: true, 
-                        grid: { color: '#1a1a1a' },
-                        title: { display: true, text: 'CPU 부하 (%)', color: '#b0b0b0' }
+                        grid: { color: '#21262d' },
+                        max: 850,
+                        ticks: { color: '#8b949e' }
                     },
-                    x: { grid: { display: false } }
+                    x: { grid: { display: false }, ticks: { color: '#8b949e' } }
                 }
             }
         });
 
-        // Message Queue 응답 속도 차트
+        // 3. Message Queue 응답 속도 차트
         new Chart(document.getElementById('mqChart'), {
             type: 'bar',
             data: {
@@ -662,11 +649,9 @@
                 datasets: [{
                     label: '평균 응답시간 (ms)',
                     data: [240, 153],
-                    backgroundColor: ['#ef5350', '#4dd0e1'], /* 강조색 변경 */
+                    backgroundColor: ['#ef476f', '#39c0c8'], /* 색상 변경 */
                     borderRadius: 6,
-                    borderSkipped: false,
-                    barPercentage: 0.6,
-                    categoryPercentage: 0.7
+                    borderSkipped: false
                 }]
             },
             options: {
@@ -676,15 +661,13 @@
                 scales: {
                     y: { 
                         beginAtZero: true, 
-                        grid: { color: '#1a1a1a' },
-                        title: { display: true, text: '응답시간 (ms)', color: '#b0b0b0' }
+                        grid: { color: '#21262d' },
+                        ticks: { color: '#8b949e' }
                     },
-                    x: { grid: { display: false } }
+                    x: { grid: { display: false }, ticks: { color: '#8b949e' } }
                 }
             }
         });
-
-        // 사용되지 않는 redisChart 스크립트는 삭제했습니다.
     </script>
 </body>
 </html>
