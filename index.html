@@ -8,199 +8,279 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
         :root {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --accent: #00e0c7; /* 밝은 민트 포인트 */
+            /* 고급스러운 다크 그라데이션 배경 */
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent: #38bdf8; /* 밝은 스카이 블루 */
+            --accent-glow: 0 0 20px rgba(56, 189, 248, 0.3);
             --text-main: #ffffff;
-            --text-sub: #a0a0a0;
+            --text-sub: #94a3b8;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Pretendard', sans-serif;
-            background-color: var(--bg-color);
+            background: var(--bg-gradient);
+            background-attachment: fixed; /* 배경 고정 */
             color: var(--text-main);
             line-height: 1.6;
+            min-height: 100vh;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 2rem;
         }
 
-        /* 헤더 섹션 */
-        header { text-align: center; margin-bottom: 5rem; }
-        h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
-        .tagline { color: var(--accent); font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; }
-        .bio { color: var(--text-sub); max-width: 600px; margin: 0 auto; word-break: keep-all; }
+        /* 1. 히어로 섹션 (소개) */
+        header { 
+            text-align: center; 
+            padding: 6rem 0; 
+            animation: fadeIn 1s ease-out;
+        }
+        
+        h1 { 
+            font-size: 4rem; 
+            font-weight: 800; 
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+        
+        .tagline { 
+            color: var(--accent); 
+            font-size: 1.5rem; 
+            font-weight: 600; 
+            margin-bottom: 2rem; 
+            text-shadow: var(--accent-glow);
+        }
+        
+        .bio { 
+            font-size: 1.1rem; 
+            color: var(--text-sub); 
+            max-width: 700px; 
+            margin: 0 auto; 
+            word-break: keep-all;
+        }
 
-        /* 섹션 공통 */
-        section { margin-bottom: 6rem; }
-        h2 { 
-            font-size: 1.8rem; 
-            margin-bottom: 2.5rem; 
+        /* 공통 섹션 스타일 */
+        section { margin-bottom: 8rem; }
+        
+        .section-title { 
+            font-size: 2rem; 
+            margin-bottom: 3rem; 
+            font-weight: 700; 
             display: flex; 
             align-items: center; 
-            gap: 10px;
+            gap: 12px;
         }
-        h2::before { content: ''; width: 5px; height: 25px; background: var(--accent); display: block; }
+        .section-title::before {
+            content: ''; width: 8px; height: 32px; 
+            background: var(--accent); 
+            border-radius: 4px;
+            box-shadow: var(--accent-glow);
+        }
 
-        /* 기술 스택 (이미지 그리드) */
+        /* 2. 기술 스택 (유리 카드 스타일) */
+        .tech-wrapper {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 3rem;
+        }
+
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 2.5rem;
             justify-items: center;
         }
+
         .tech-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             transition: transform 0.3s;
+            cursor: default;
         }
-        .tech-item:hover { transform: translateY(-5px); }
+        
+        .tech-item:hover { transform: translateY(-10px); }
         
         .tech-icon-box {
             width: 80px;
             height: 80px;
-            background: #252525;
-            border-radius: 18px;
+            /* 아이콘 배경 제거하고 깔끔하게 이미지 강조 */
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            border: 1px solid #333;
-            padding: 18px;
-            transition: border-color 0.3s;
-        }
-        .tech-item:hover .tech-icon-box { border-color: var(--accent); }
-        
-        .tech-icon-box img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: contain; 
-            filter: grayscale(20%);
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
             transition: filter 0.3s;
         }
-        .tech-item:hover .tech-icon-box img { filter: grayscale(0%); }
+        
+        .tech-item:hover .tech-icon-box { filter: drop-shadow(0 0 15px var(--accent)); }
+        
+        .tech-icon-box img { width: 100%; height: 100%; object-fit: contain; }
+        .tech-name { font-size: 0.95rem; color: #cbd5e1; font-weight: 500; }
 
-        .tech-name { font-size: 0.9rem; color: var(--text-sub); font-weight: 500; }
-
-        /* 프로젝트 카드 */
-        .project-header-card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 12px;
-            border: 1px solid #333;
+        /* 3. 프로젝트 섹션 */
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
             margin-bottom: 2rem;
-            position: relative;
-            overflow: hidden;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 2rem;
         }
-        .project-header-card::after {
-            content: ''; position: absolute; top: 0; right: 0; width: 100px; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 224, 199, 0.05));
-            pointer-events: none;
-        }
-
-        .project-title-row { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
-        .project-title h3 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #fff; }
+        
+        .project-title h2 { margin: 0; font-size: 2.5rem; color: #fff; line-height: 1.2;}
+        .project-date { color: var(--text-sub); font-size: 1rem; margin-top: 0.5rem; display: block; }
         
         .links a { 
-            color: var(--accent); 
-            text-decoration: none; 
-            margin-left: 1rem; 
-            font-weight: 600; 
-            border: 1px solid var(--accent);
-            padding: 6px 16px;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            margin-left: 10px;
+        }
+        .links a:hover { 
+            background: var(--accent); 
+            color: #000; 
+            box-shadow: var(--accent-glow);
+        }
+
+        .project-desc { 
+            font-size: 1.1rem; 
+            color: #e2e8f0; 
+            margin-bottom: 4rem; 
+            line-height: 1.8; 
+            max-width: 900px;
+        }
+
+        /* 성과 그리드 레이아웃 */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* 카드 공통 스타일 */
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
             border-radius: 20px;
-            font-size: 0.85rem;
+            padding: 2.5rem;
             transition: all 0.3s;
         }
-        .links a:hover { background: var(--accent); color: #000; box-shadow: 0 0 10px var(--accent); }
-
-        /* 성과 그리드 */
-        .achievement-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
+        .card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+            transform: translateY(-5px);
         }
-        
-        .card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid #333;
-            transition: transform 0.2s, box-shadow 0.2s;
+
+        /* 상세 카드 (그래프 포함) */
+        .card-lg {
+            grid-column: span 1; /* 2열 그리드에서 1칸 차지 */
             display: flex;
             flex-direction: column;
         }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: var(--accent); }
-        
-        /* 카드 내부 */
-        .card-head { margin-bottom: 1rem; }
-        .card-badge { 
-            background: #2c2c2c; color: var(--text-sub); 
-            padding: 4px 10px; border-radius: 6px; 
-            font-size: 0.75rem; display: inline-block; margin-bottom: 0.8rem;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
-        .card-title { font-size: 1.2rem; font-weight: 700; color: #fff; line-height: 1.3; }
-        
-        /* 상세 설명 스타일 */
-        .problem-solution {
-            margin-top: 1rem;
-            font-size: 0.95rem;
-            color: #ccc;
-            line-height: 1.7;
-            background: #252525;
-            padding: 1rem;
-            border-radius: 8px;
-        }
-        .ps-label {
-            color: var(--accent);
-            font-weight: 700;
+
+        .badge {
             display: inline-block;
-            margin-right: 5px;
+            padding: 6px 12px;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
-        .ps-block { margin-bottom: 0.8rem; }
-        .ps-block:last-child { margin-bottom: 0; }
 
-        /* 일반 설명 스타일 */
-        .card-desc { font-size: 0.95rem; color: #ccc; flex-grow: 1; word-break: keep-all; line-height: 1.6; }
+        .card-title { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1.5rem; }
 
-        /* 차트 영역 */
-        .chart-area { height: 250px; margin-top: 1.5rem; }
-        .span-2 { grid-column: span 2; } 
+        .metric-highlight {
+            font-size: 1.1rem;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .ps-text { font-size: 0.95rem; color: #cbd5e1; margin-bottom: 0.8rem; }
+        .ps-label { color: var(--accent); font-weight: 700; margin-right: 6px; }
 
-        /* 타임라인 */
-        .timeline-item {
-            display: flex;
-            gap: 2rem;
-            padding-bottom: 3rem;
-            border-left: 2px solid #333;
-            padding-left: 2rem;
+        .chart-wrapper {
+            margin-top: auto; /* 아래로 밀기 */
+            height: 250px;
+            width: 100%;
             position: relative;
         }
-        .timeline-item:last-child { border: none; }
-        .timeline-item::before {
-            content: ''; width: 14px; height: 14px; background: var(--bg-color);
-            border: 3px solid var(--accent);
-            border-radius: 50%; position: absolute; left: -8px; top: 5px;
+
+        /* 작은 카드 그리드 (나머지 6개) */
+        .small-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
-        .time-date { color: var(--accent); font-size: 0.9rem; min-width: 140px; font-weight: 600; padding-top: 2px;}
-        .time-content h4 { font-size: 1.2rem; margin-bottom: 0.5rem; color: #fff; }
         
-        /* 모바일 대응 */
+        .card-sm h3 { font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem; }
+        .card-sm p { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; }
+
+        /* 교육 섹션 */
+        .edu-item {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .edu-item:last-child { border: none; }
+        .edu-date { min-width: 150px; color: var(--accent); font-weight: 600; }
+        .edu-content h4 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .edu-content p { color: var(--text-sub); }
+
+        /* 푸터 */
+        footer {
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+            color: var(--text-sub);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 반응형 */
+        @media (max-width: 1024px) {
+            .grid-container { grid-template-columns: 1fr; } /* 태블릿/모바일은 1열 */
+        }
         @media (max-width: 768px) {
-            .span-2 { grid-column: span 1; }
-            .project-title-row { flex-direction: column; }
-            .links { margin-left: 0; margin-top: 1rem; }
-            .tech-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-            .tech-icon-box { width: 60px; height: 60px; padding: 12px; }
+            h1 { font-size: 2.5rem; }
+            .tech-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+            .project-header { flex-direction: column; align-items: flex-start; }
+            .links a { margin-left: 0; margin-right: 10px; margin-top: 10px; }
+            .edu-item { flex-direction: column; gap: 0.5rem; }
         }
     </style>
 </head>
@@ -209,331 +289,269 @@
 <div class="container">
     
     <header>
-        <h1>백도현</h1>
+        <h1>Baek Do Hyeon</h1>
         <div class="tagline">Cost-Effective & High Performance Backend Developer</div>
         <p class="bio">
             "비용 효율과 성능 최적화에 집요하게 몰입합니다."<br>
-            수치로 증명되는 성장을 만드는 개발자, 백도현입니다.
+            수치로 증명되는 성장을 만드는 개발자입니다.
         </p>
     </header>
 
     <section>
-        <h2>Tech Stack</h2>
-        <div class="tech-grid">
-            <div class="tech-item">
-                <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/openjdk/white" alt="Java"></div>
-                <span class="tech-name">Java 17</span>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/springboot/6DB33F" alt="Spring Boot"></div>
-                <span class="tech-name">Spring Boot</span>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"></div>
-                <span class="tech-name">MySQL</span>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/redis/FF4438" alt="Redis"></div>
-                <span class="tech-name">Redis</span>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/elasticsearch/005571" alt="Elasticsearch"></div>
-                <span class="tech-name">Elasticsearch</span>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/rabbitmq/FF6600" alt="RabbitMQ"></div>
-                <span class="tech-name">RabbitMQ</span>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/amazonaws/white" alt="AWS"></div>
-                <span class="tech-name">AWS</span>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker"></div>
-                <span class="tech-name">Docker</span>
+        <div class="section-title">Tech Stack</div>
+        <div class="tech-wrapper">
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/openjdk/white" alt="Java"></div>
+                    <span class="tech-name">Java 17</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/springboot/38bdf8" alt="Spring Boot"></div>
+                    <span class="tech-name">Spring Boot</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/mysql/white" alt="MySQL"></div>
+                    <span class="tech-name">MySQL</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/redis/FF4438" alt="Redis"></div>
+                    <span class="tech-name">Redis</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/elasticsearch/38bdf8" alt="Elasticsearch"></div>
+                    <span class="tech-name">Elasticsearch</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/rabbitmq/FF6600" alt="RabbitMQ"></div>
+                    <span class="tech-name">RabbitMQ</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/amazonaws/white" alt="AWS"></div>
+                    <span class="tech-name">AWS</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon-box"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker"></div>
+                    <span class="tech-name">Docker</span>
+                </div>
             </div>
         </div>
     </section>
 
     <section>
-        <h2>Project Experience</h2>
+        <div class="section-title">Project Experience</div>
         
-        <div class="project-header-card">
-            <div class="project-title-row">
-                <div>
-                    <h3>UP-PICK (중고 거래 플랫폼)</h3>
-                    <p style="color: var(--text-sub); margin-top: 5px;">2025.10.13 ~ 2025.11.19 (5주)</p>
-                </div>
-                <div class="links">
-                    <a href="https://github.com/DoH100" target="_blank">GitHub</a>
-                    <a href="#">Portfolio</a>
-                </div>
+        <div class="project-header">
+            <div class="project-title">
+                <h2>UP-PICK</h2>
+                <span class="project-date">2025.10.13 ~ 2025.11.19 (5주)</span>
             </div>
-            <p style="margin-top: 1.5rem; color: #ccc; border-top: 1px solid #333; padding-top: 1.5rem;">
-                흥정 없는 투명한 가격 형성과 쇼핑의 게임화를 도입한 플랫폼입니다. <br>
-                대규모 트래픽 처리를 위한 고가용성 아키텍처 설계에 집중했습니다.
-            </p>
+            <div class="links">
+                <a href="https://github.com/DoH100" target="_blank">GitHub Repo</a>
+                <a href="#">Presentation</a>
+            </div>
         </div>
+        <p class="project-desc">
+            흥정 없는 투명한 가격 형성과 쇼핑의 게임화를 도입한 중고 거래 플랫폼입니다. 
+            대규모 트래픽 처리를 위한 고가용성 아키텍처 설계와 성능 최적화에 집중했습니다.
+        </p>
 
-        <div class="achievement-grid">
-
-            <div class="card span-2">
-                <div class="card-head">
-                    <span class="card-badge">Search Performance</span>
-                    <div class="card-title">검색 속도 13배 향상 (Elasticsearch)</div>
+        <div class="grid-container">
+            
+            <div class="card card-lg">
+                <span class="badge">Performance</span>
+                <div class="card-title">검색 속도 13배 향상 (Elasticsearch)</div>
+                <div class="metric-highlight">
+                    <div class="ps-text"><span class="ps-label">문제:</span> MySQL LIKE 검색의 Full Scan 및 형태소 분석 불가</div>
+                    <div class="ps-text" style="margin-bottom:0;"><span class="ps-label">해결:</span> Elasticsearch 도입으로 정확도 확보 및 속도 개선</div>
                 </div>
-                
-                <div class="problem-solution">
-                    <div class="ps-block">
-                        <span class="ps-label">[문제상황]</span>
-                        MySQL LIKE 검색(690ms)은 Full Table Scan을 유발했고, 형태소 분석이 불가능했습니다. Full-Text Search(302ms) 또한 확장성 및 한글 처리에 한계가 있었습니다.
-                    </div>
-                    <div class="ps-block">
-                        <span class="ps-label">[해결방법]</span>
-                        Elasticsearch를 도입하여 평균 응답 시간을 690ms → 52ms로 약 13배 단축시키고, 정확도 높은 검색 환경을 구축했습니다.
-                    </div>
-                </div>
-
-                <div class="chart-area">
+                <div class="chart-wrapper">
                     <canvas id="chartSearch"></canvas>
                 </div>
             </div>
 
-            <div class="card span-2">
-                <div class="card-head">
-                    <span class="card-badge">Database Stability</span>
-                    <div class="card-title">DB 부하 800% → 30% 안정화</div>
+            <div class="card card-lg">
+                <span class="badge">Stability</span>
+                <div class="card-title">DB 부하 800% → 30% 안정화</div>
+                <div class="metric-highlight">
+                    <div class="ps-text"><span class="ps-label">문제:</span> 단일 DB 트래픽 집중으로 CPU 800% 급등</div>
+                    <div class="ps-text" style="margin-bottom:0;"><span class="ps-label">해결:</span> Master/Slave Replication으로 읽기 부하 분산</div>
                 </div>
-
-                <div class="problem-solution">
-                    <div class="ps-block">
-                        <span class="ps-label">[문제상황]</span>
-                        단일 DB 인스턴스에 읽기/쓰기 트래픽이 모두 집중되어, 피크 시간대 CPU 부하가 800%까지 급등하는 장애 위험이 있었습니다.
-                    </div>
-                    <div class="ps-block">
-                        <span class="ps-label">[해결방법]</span>
-                        Master/Slave Replication 아키텍처를 구축하여 읽기 트래픽을 Slave로 분산시켰습니다. 그 결과 Master DB의 CPU 부하를 30% 수준으로 안정화했습니다.
-                    </div>
-                </div>
-
-                <div class="chart-area">
-                    <canvas id="chartDBLoad"></canvas>
+                <div class="chart-wrapper">
+                    <canvas id="chartDB"></canvas>
                 </div>
             </div>
 
-             <div class="card span-2">
-                <div class="card-head">
-                    <span class="card-badge">High Traffic</span>
-                    <div class="card-title">입찰 TPS 1.5배 증가</div>
+            <div class="card card-lg">
+                <span class="badge">Throughput</span>
+                <div class="card-title">입찰 TPS 1.5배 증가</div>
+                <div class="metric-highlight">
+                    <div class="ps-text"><span class="ps-label">문제:</span> 고빈도 입찰 갱신으로 인한 DB 병목</div>
+                    <div class="ps-text" style="margin-bottom:0;"><span class="ps-label">해결:</span> Redis In-memory 처리로 전환하여 병목 해소</div>
                 </div>
-
-                <div class="problem-solution">
-                    <div class="ps-block">
-                        <span class="ps-label">[문제상황]</span>
-                        실시간 입찰 시 조회/갱신 작업이 DB에 집중되어 CPU 피크(9% 이상)를 유발하고 전체적인 처리량(TPS)이 저하되었습니다.
-                    </div>
-                    <div class="ps-block">
-                        <span class="ps-label">[해결방법]</span>
-                        고빈도 입찰 데이터를 Redis(In-memory)에서 우선 처리하도록 분산했습니다. 입찰 처리량(TPS)이 1.5배 증가하고 CPU 피크 사용률은 50% 절감되었습니다.
-                    </div>
-                </div>
-
-                <div class="chart-area">
+                <div class="chart-wrapper">
                     <canvas id="chartTPS"></canvas>
                 </div>
             </div>
 
-             <div class="card span-2">
-                <div class="card-head">
-                    <span class="card-badge">Query Tuning</span>
-                    <div class="card-title">쿼리 속도 70% 단축</div>
+            <div class="card card-lg">
+                <span class="badge">Optimization</span>
+                <div class="card-title">쿼리 속도 70% 단축</div>
+                <div class="metric-highlight">
+                    <div class="ps-text"><span class="ps-label">문제:</span> 복합 조건 조회 시 Full Table Scan 발생</div>
+                    <div class="ps-text" style="margin-bottom:0;"><span class="ps-label">해결:</span> 복합 키 인덱스(입찰자+상태+시간) 적용</div>
                 </div>
-
-                <div class="problem-solution">
-                    <div class="ps-block">
-                        <span class="ps-label">[문제상황]</span>
-                        경매 상태 및 입찰자 등 복합 조건 조회 시 Full Table Scan이 발생하여 평균 쿼리 응답 시간이 417.6ms로 지연되었습니다.
-                    </div>
-                    <div class="ps-block">
-                        <span class="ps-label">[해결방법]</span>
-                        조회 패턴을 분석하여 `last_bidder_id`, `status`, `end_at` 순서의 복합 키 인덱스를 적용, 응답 시간을 124.0ms로 단축했습니다.
-                    </div>
-                </div>
-
-                <div class="chart-area">
+                <div class="chart-wrapper">
                     <canvas id="chartQuery"></canvas>
                 </div>
             </div>
-
-            <div class="card">
-                <div class="card-head">
-                    <span class="card-badge">Concurrency</span>
-                    <div class="card-title">Virtual Thread 도입</div>
-                </div>
-                <div class="card-desc">
-                    스레드 경합으로 인한 지연(19.6초) 해결. 블로킹 I/O 처리에 효율적인 Virtual Thread를 적용하여 TPS 2.7배 증가 및 에러율 0% 달성.
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-head">
-                    <span class="card-badge">Async Processing</span>
-                    <div class="card-title">API 응답 36% 단축</div>
-                </div>
-                <div class="card-desc">
-                    입찰 후처리(알림, 정산)를 RabbitMQ로 비동기 처리하여 API 응답 시간을 240ms → 153ms로 단축.
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-head">
-                    <span class="card-badge">Caching</span>
-                    <div class="card-title">DB CPU 사용률 90% 감소</div>
-                </div>
-                <div class="card-desc">
-                    반복적인 카테고리 조회에 Redis Cache-Aside 패턴을 적용하여 DB 부하를 획기적으로 줄임.
-                </div>
-            </div>
-
-             <div class="card">
-                <div class="card-head">
-                    <span class="card-badge">Data Integrity</span>
-                    <div class="card-title">동시 요청 성공률 100%</div>
-                </div>
-                <div class="card-desc">
-                    낙관적 락 실패(70%) 문제를 Redis 원자적 연산으로 전환하여 5,000회 동시 요청 테스트 성공.
-                </div>
-            </div>
-
-             <div class="card">
-                <div class="card-head">
-                    <span class="card-badge">Serverless</span>
-                    <div class="card-title">Lambda Cold Start 해결</div>
-                </div>
-                <div class="card-desc">
-                    SnapStart 적용으로 JVM 워밍업 시간을 단축하여 실행 시간을 91.5% 개선하고 비용 절감.
-                </div>
-            </div>
-
-             <div class="card">
-                <div class="card-head">
-                    <span class="card-badge">Batch</span>
-                    <div class="card-title">Spring Batch 최적화</div>
-                </div>
-                <div class="card-desc">
-                    트랜잭션 부하를 최소화하는 최적의 청크 사이즈(100)를 도출하여 배치 성능 개선.
-                </div>
-            </div>
-
         </div>
+
+        <div class="small-grid">
+            <div class="card card-sm">
+                <h3>Virtual Thread 도입</h3>
+                <p>스레드 경합(19.6s 지연) 해결. 블로킹 I/O 최적화로 TPS 2.7배 증가 및 에러율 0% 달성.</p>
+            </div>
+            <div class="card card-sm">
+                <h3>API 응답 36% 단축</h3>
+                <p>RabbitMQ 도입. 입찰 후처리(알림, 정산) 로직을 비동기로 분리하여 지연 시간 단축.</p>
+            </div>
+            <div class="card card-sm">
+                <h3>DB CPU 사용률 90% 감소</h3>
+                <p>반복적인 카테고리 조회에 Redis Cache-Aside 패턴 적용. 불필요한 DB 접근 최소화.</p>
+            </div>
+            <div class="card card-sm">
+                <h3>동시 요청 성공률 100%</h3>
+                <p>낙관적 락 실패(70%) 문제를 Redis 원자적 연산으로 전환하여 동시성 이슈 해결.</p>
+            </div>
+            <div class="card card-sm">
+                <h3>Lambda Cold Start 해결</h3>
+                <p>SnapStart 적용으로 JVM 워밍업 시간을 단축하여 실행 속도 91.5% 개선.</p>
+            </div>
+            <div class="card card-sm">
+                <h3>Spring Batch 최적화</h3>
+                <p>테스트를 통해 트랜잭션 효율이 가장 높은 최적의 청크 사이즈(100) 도출 및 적용.</p>
+            </div>
+        </div>
+
     </section>
 
     <section>
-        <h2>Education</h2>
-        <div class="timeline-item">
-            <div class="time-date">2025.06 ~ 2025.11</div>
-            <div class="time-content">
+        <div class="section-title">Education</div>
+        <div class="edu-item">
+            <div class="edu-date">2025.06 ~ 2025.11</div>
+            <div class="edu-content">
                 <h4>스파르타 스프링 백엔드 8기 수료</h4>
-                <p style="color: #aaa;">Spring Boot, JPA, AWS 실무 프로젝트 진행 및 최우수 수료</p>
+                <p>Spring Boot, JPA, AWS 실무 프로젝트 진행 및 최우수 수료</p>
             </div>
         </div>
-        <div class="timeline-item">
-            <div class="time-date">2020.03 ~</div>
-            <div class="time-content">
+        <div class="edu-item">
+            <div class="edu-date">2020.03 ~</div>
+            <div class="edu-content">
                 <h4>동의대학교 컴퓨터공학과</h4>
-                <p style="color: #aaa;">CS 기초, 알고리즘, 자료구조, 운영체제 이수</p>
+                <p>CS 기초, 알고리즘, 자료구조, 운영체제 이수</p>
             </div>
         </div>
     </section>
 
-    <footer style="text-align: center; color: #666; font-size: 0.9rem; margin-top: 5rem;">
+    <footer>
         <p>&copy; 2025 Baek Do Hyeon. All rights reserved.</p>
-        <p style="margin-top: 5px;">ehgus66648@gmail.com | 010-2591-6067</p>
+        <p>ehgus66648@gmail.com | 010-2591-6067</p>
     </footer>
 
 </div>
 
 <script>
-    // 공통 차트 옵션
+    // 차트 공통 설정
+    Chart.defaults.font.family = 'Pretendard';
+    Chart.defaults.color = '#94a3b8';
+    
     const commonOptions = {
         responsive: true,
         maintainAspectRatio: false,
         plugins: { legend: { display: false } },
         scales: {
-            y: { grid: { color: '#333' }, ticks: { color: '#888' } },
-            x: { grid: { display: false }, ticks: { color: '#ccc', font: { weight: 'bold' } } }
-        }
+            y: { 
+                grid: { color: 'rgba(255,255,255,0.1)' }, 
+                ticks: { color: '#94a3b8' } 
+            },
+            x: { 
+                grid: { display: false }, 
+                ticks: { color: '#fff', font: { weight: 'bold' } } 
+            }
+        },
+        animation: { duration: 2000, easing: 'easeOutQuart' }
     };
 
-    // 1. 검색 속도 차트
+    // 1. 검색 속도 (Bar Chart)
     new Chart(document.getElementById('chartSearch'), {
         type: 'bar',
         data: {
             labels: ['MySQL LIKE', 'Full-Text', 'Elasticsearch'],
             datasets: [{
                 data: [690, 302, 52],
-                backgroundColor: ['#333', '#444', '#00e0c7'],
-                borderRadius: 4
+                backgroundColor: ['rgba(255,255,255,0.2)', 'rgba(255,255,255,0.4)', '#38bdf8'],
+                borderRadius: 8,
+                barThickness: 40
             }]
         },
         options: {
             ...commonOptions,
-            plugins: { ...commonOptions.plugins, title: { display: true, text: '응답 시간 (ms, 낮을수록 좋음)', color: '#888', align: 'start' } }
+            plugins: { title: { display: true, text: '응답 시간 (ms, 낮을수록 좋음)', align: 'start', color: '#94a3b8' }, legend: {display: false} }
         }
     });
 
-    // 2. DB 부하 차트
-    new Chart(document.getElementById('chartDBLoad'), {
+    // 2. DB 부하 (Bar Chart)
+    new Chart(document.getElementById('chartDB'), {
         type: 'bar',
         data: {
-            labels: ['Before (Single)', 'After (Replication)'],
+            labels: ['Before', 'After'],
             datasets: [{
                 data: [800, 30],
-                backgroundColor: ['#ef476f', '#00e0c7'],
-                borderRadius: 4,
+                backgroundColor: ['#ef4444', '#38bdf8'],
+                borderRadius: 8,
                 barThickness: 60
             }]
         },
         options: {
             ...commonOptions,
-            plugins: { ...commonOptions.plugins, title: { display: true, text: 'CPU 부하 (%)', color: '#888', align: 'start' } }
+            plugins: { title: { display: true, text: 'CPU 부하 (%)', align: 'start', color: '#94a3b8' }, legend: {display: false} }
         }
     });
 
-    // 3. TPS 차트
+    // 3. TPS (Bar Chart - Horizontal style visualized vertically for consistency)
     new Chart(document.getElementById('chartTPS'), {
         type: 'bar',
         data: {
-            labels: ['Before (DB)', 'After (Redis)'],
+            labels: ['Before', 'After'],
             datasets: [{
-                data: [100, 150], // 1.5배 예시 데이터
-                backgroundColor: ['#333', '#00e0c7'],
-                borderRadius: 4,
+                data: [100, 150],
+                backgroundColor: ['rgba(255,255,255,0.2)', '#38bdf8'],
+                borderRadius: 8,
                 barThickness: 60
             }]
         },
         options: {
             ...commonOptions,
-            plugins: { ...commonOptions.plugins, title: { display: true, text: '상대적 처리량 (TPS)', color: '#888', align: 'start' } },
-            scales: { ...commonOptions.scales, y: { display: false } } // Y축 숫자 숨김 (상대 비교 강조)
+            plugins: { title: { display: true, text: '상대적 처리량 (TPS)', align: 'start', color: '#94a3b8' }, legend: {display: false} },
+            scales: { ...commonOptions.scales, y: { display: false } }
         }
     });
 
-    // 4. 쿼리 속도 차트
+    // 4. 쿼리 속도 (Bar Chart)
     new Chart(document.getElementById('chartQuery'), {
         type: 'bar',
         data: {
-            labels: ['Before (Full Scan)', 'After (Index)'],
+            labels: ['Full Scan', 'Index'],
             datasets: [{
-                data: [417.6, 124.0],
-                backgroundColor: ['#ef476f', '#00e0c7'],
-                borderRadius: 4,
+                data: [417, 124],
+                backgroundColor: ['#ef4444', '#38bdf8'],
+                borderRadius: 8,
                 barThickness: 60
             }]
         },
         options: {
             ...commonOptions,
-            plugins: { ...commonOptions.plugins, title: { display: true, text: '응답 시간 (ms)', color: '#888', align: 'start' } }
+            plugins: { title: { display: true, text: '응답 시간 (ms)', align: 'start', color: '#94a3b8' }, legend: {display: false} }
         }
     });
 </script>
