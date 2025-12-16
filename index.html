@@ -71,7 +71,6 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 12px;
-            margin-bottom: 1.5rem;
         }
         .tech-item-sm {
             background: #252525;
@@ -89,18 +88,6 @@
         
         .tech-item-sm img { width: 32px; height: 32px; object-fit: contain; margin-bottom: 5px; }
         .tech-label { font-size: 0.7rem; color: #ccc; text-align: center; line-height: 1.2; font-weight: 500; }
-
-        /* 기술 역량 설명 박스 (새로 추가됨) */
-        .skill-summary {
-            background: #252525;
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            color: #ccc;
-            line-height: 1.6;
-            border-left: 2px solid var(--accent);
-        }
-        .skill-summary strong { color: #fff; }
 
         /* 교육 타임라인 */
         .edu-item {
@@ -150,6 +137,37 @@
         .links a:hover { background: var(--accent); color: #000; }
         
         .project-desc { color: #ccc; border-top: 1px solid #333; padding-top: 1.5rem; margin-top: 1rem; }
+
+        /* === NEW: 검증된 기술 역량 (경험 기반) === */
+        .skill-highlights {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        .skill-box {
+            background: #252525;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+        .skill-box h3 {
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .skill-box h3::before {
+            content: ''; display: inline-block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+        }
+        .skill-box p {
+            font-size: 0.85rem;
+            color: #a0a0a0;
+            line-height: 1.5;
+            word-break: keep-all;
+        }
+        .skill-box strong { color: var(--accent); font-weight: 600; }
 
         /* 성과 그리드 */
         .achievement-grid {
@@ -208,6 +226,7 @@
             .layout-container { grid-template-columns: 1fr; }
             .sidebar { position: static; }
             .tech-grid-sm { grid-template-columns: repeat(8, 1fr); }
+            .skill-highlights { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             .achievement-grid { grid-template-columns: 1fr; }
@@ -272,11 +291,6 @@
                     <span class="tech-label">Docker</span>
                 </div>
             </div>
-
-            <div class="skill-summary">
-                <strong>Core Competency</strong><br>
-                단순한 기능 구현을 넘어, 대용량 트래픽 처리를 고려한 <strong>아키텍처 설계</strong>가 가능합니다. 문제의 원인을 파악하고 <strong>수치적 근거</strong>를 기반으로 시스템 성능을 최적화하는 데 강점이 있습니다.
-            </div>
         </div>
 
         <div>
@@ -310,6 +324,33 @@
                 흥정 없는 공정한 거래를 위한 <strong>실시간 경매형 중고거래 플랫폼</strong>입니다. <br>
                 MSA 아키텍처와 이벤트 기반 설계를 도입하여 확장성을 확보했으며, 대규모 트래픽 상황에서의 고가용성과 비용 효율성에 집중했습니다.
             </p>
+        </div>
+
+        <div class="skill-highlights">
+            <div class="skill-box">
+                <h3>High-Concurrency (Redis)</h3>
+                <p>
+                    선착순 이벤트나 재고 관리 등 동시성 이슈가 발생하는 환경에서, <strong>Redis Atomic Operation</strong>과 <strong>Distributed Lock</strong>을 활용해 데이터 정합성을 보장하고 DB 부하를 최소화할 수 있습니다.
+                </p>
+            </div>
+            <div class="skill-box">
+                <h3>Scalability (Architecture)</h3>
+                <p>
+                    트래픽 분산을 위해 <strong>DB Replication(Master/Slave)</strong> 구조를 설계하고, <strong>AWS CloudFront/S3</strong>를 연동해 정적 리소스를 효율적으로 처리하며 비용을 절감해본 경험이 있습니다.
+                </p>
+            </div>
+            <div class="skill-box">
+                <h3>Async System (RabbitMQ)</h3>
+                <p>
+                    시스템 간의 강한 결합을 풀기 위해 <strong>RabbitMQ/Kafka</strong>를 활용하여 핵심 로직과 부가 기능(알림, 정산)을 비동기 이벤트로 분리하는 <strong>EDA(Event-Driven Architecture)</strong>를 구현할 수 있습니다.
+                </p>
+            </div>
+            <div class="skill-box">
+                <h3>Performance (Elasticsearch)</h3>
+                <p>
+                    RDB의 검색 성능 한계(Full Scan)를 극복하기 위해 <strong>Elasticsearch</strong>의 역인덱싱과 형태소 분석기를 도입하여, 대용량 데이터에서도 <strong>정확하고 빠른 검색 엔진</strong>을 구축할 수 있습니다.
+                </p>
+            </div>
         </div>
 
         <div class="achievement-grid">
