@@ -71,6 +71,7 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 12px;
+            margin-bottom: 1.5rem;
         }
         .tech-item-sm {
             background: #252525;
@@ -88,6 +89,18 @@
         
         .tech-item-sm img { width: 32px; height: 32px; object-fit: contain; margin-bottom: 5px; }
         .tech-label { font-size: 0.7rem; color: #ccc; text-align: center; line-height: 1.2; font-weight: 500; }
+
+        /* 기술 역량 설명 박스 (새로 추가됨) */
+        .skill-summary {
+            background: #252525;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #ccc;
+            line-height: 1.6;
+            border-left: 2px solid var(--accent);
+        }
+        .skill-summary strong { color: #fff; }
 
         /* 교육 타임라인 */
         .edu-item {
@@ -251,13 +264,18 @@
                     <span class="tech-label">RabbitMQ</span>
                 </div>
                 <div class="tech-item-sm">
-                    <img src="https://cdn.simpleicons.org/amazonaws/white" alt="AWS">
+                    <img src="https://cdn.simpleicons.org/amazonwebservices/white" alt="AWS">
                     <span class="tech-label">AWS</span>
                 </div>
                 <div class="tech-item-sm">
                     <img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker">
                     <span class="tech-label">Docker</span>
                 </div>
+            </div>
+
+            <div class="skill-summary">
+                <strong>Core Competency</strong><br>
+                단순한 기능 구현을 넘어, 대용량 트래픽 처리를 고려한 <strong>아키텍처 설계</strong>가 가능합니다. 문제의 원인을 파악하고 <strong>수치적 근거</strong>를 기반으로 시스템 성능을 최적화하는 데 강점이 있습니다.
             </div>
         </div>
 
@@ -266,7 +284,7 @@
             <div class="edu-item">
                 <span class="edu-date">2025.06 ~ 2025.11</span>
                 <div class="edu-school">스파르타 스프링 8기</div>
-                <div class="edu-desc">최우수 수료, 실무 프로젝트</div>
+                <div class="edu-desc">우수 수료, 실무 프로젝트</div>
             </div>
             <div class="edu-item">
                 <span class="edu-date">2020.03 ~</span>
@@ -451,7 +469,7 @@
         }
     };
 
-    // 1. Redis (Success Rate) - New
+    // 1. Redis (Success Rate)
     new Chart(document.getElementById('chartRedis'), {
         type: 'bar',
         data: {
@@ -469,7 +487,7 @@
         }
     });
 
-    // 2. RabbitMQ (Response Time) - New
+    // 2. RabbitMQ (Response Time)
     new Chart(document.getElementById('chartRabbitMQ'), {
         type: 'bar',
         data: {
@@ -487,7 +505,7 @@
         }
     });
 
-    // 3. 검색 성능 (Elasticsearch) - Existing
+    // 3. 검색 성능 (Elasticsearch)
     new Chart(document.getElementById('chartSearch'), {
         type: 'bar',
         data: {
@@ -504,7 +522,7 @@
         }
     });
 
-    // 4. DB 부하 (Replication) - Existing
+    // 4. DB 부하 (Replication)
     new Chart(document.getElementById('chartDBLoad'), {
         type: 'bar',
         data: {
