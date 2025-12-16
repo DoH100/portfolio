@@ -66,24 +66,28 @@
             color: #fff;
         }
 
-        /* 기술 스택 (사이드바용 소형 그리드) */
+        /* 기술 스택 (사이드바용 소형 그리드 - 텍스트 추가됨) */
         .tech-grid-sm {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            gap: 12px;
         }
         .tech-item-sm {
             background: #252525;
             border-radius: 8px;
-            padding: 8px;
+            padding: 10px 5px;
             display: flex;
+            flex-direction: column; /* 세로 정렬 */
             align-items: center;
             justify-content: center;
             border: 1px solid #333;
             transition: all 0.2s;
+            height: 80px; /* 높이 고정 */
         }
         .tech-item-sm:hover { border-color: var(--accent); transform: translateY(-2px); }
-        .tech-item-sm img { width: 100%; height: 100%; object-fit: contain; }
+        
+        .tech-item-sm img { width: 32px; height: 32px; object-fit: contain; margin-bottom: 5px; }
+        .tech-label { font-size: 0.7rem; color: #ccc; text-align: center; line-height: 1.2; font-weight: 500; }
 
         /* 교육 타임라인 */
         .edu-item {
@@ -161,21 +165,28 @@
         }
         .card-title { font-size: 1.1rem; font-weight: 700; color: #fff; margin-top: 0.5rem;}
         
-        /* 문제/해결 박스 */
+        /* 문제/해결 박스 (상세 내용용) */
         .problem-solution {
             margin-top: auto;
             font-size: 0.9rem;
             color: #ccc;
             background: #252525;
-            padding: 1rem;
+            padding: 1.2rem;
             border-radius: 8px;
             margin-bottom: 1rem;
+            line-height: 1.6;
         }
-        .ps-block { margin-bottom: 0.5rem; }
+        .ps-block { margin-bottom: 1rem; }
         .ps-block:last-child { margin-bottom: 0; }
-        .ps-label { color: var(--accent); font-weight: 700; margin-right: 5px; }
+        .ps-label { 
+            color: var(--accent); 
+            font-weight: 700; 
+            display: block; /* 줄바꿈 */
+            margin-bottom: 4px;
+            font-size: 0.85rem;
+        }
 
-        .chart-area { height: 220px; width: 100%; }
+        .chart-area { height: 250px; width: 100%; margin-top: 1rem; }
         
         .card-desc { font-size: 0.95rem; color: #ccc; line-height: 1.6; }
 
@@ -215,14 +226,38 @@
         <div>
             <div class="sidebar-title">Tech Stack</div>
             <div class="tech-grid-sm">
-                <div class="tech-item-sm" title="Java"><img src="https://cdn.simpleicons.org/openjdk/white" alt="Java"></div>
-                <div class="tech-item-sm" title="Spring Boot"><img src="https://cdn.simpleicons.org/springboot/6DB33F" alt="Spring Boot"></div>
-                <div class="tech-item-sm" title="MySQL"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"></div>
-                <div class="tech-item-sm" title="Redis"><img src="https://cdn.simpleicons.org/redis/FF4438" alt="Redis"></div>
-                <div class="tech-item-sm" title="Elasticsearch"><img src="https://cdn.simpleicons.org/elasticsearch/005571" alt="Elasticsearch"></div>
-                <div class="tech-item-sm" title="RabbitMQ"><img src="https://cdn.simpleicons.org/rabbitmq/FF6600" alt="RabbitMQ"></div>
-                <div class="tech-item-sm" title="AWS"><img src="https://cdn.simpleicons.org/amazonaws/white" alt="AWS"></div>
-                <div class="tech-item-sm" title="Docker"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker"></div>
+                <div class="tech-item-sm">
+                    <img src="https://cdn.simpleicons.org/openjdk/white" alt="Java">
+                    <span class="tech-label">Java 21</span>
+                </div>
+                <div class="tech-item-sm">
+                    <img src="https://cdn.simpleicons.org/springboot/6DB33F" alt="Spring Boot">
+                    <span class="tech-label">Spring Boot</span>
+                </div>
+                <div class="tech-item-sm">
+                    <img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL">
+                    <span class="tech-label">MySQL</span>
+                </div>
+                <div class="tech-item-sm">
+                    <img src="https://cdn.simpleicons.org/redis/FF4438" alt="Redis">
+                    <span class="tech-label">Redis</span>
+                </div>
+                <div class="tech-item-sm">
+                    <img src="https://cdn.simpleicons.org/opensearch/38bdf8" alt="OpenSearch">
+                    <span class="tech-label">OpenSearch</span>
+                </div>
+                <div class="tech-item-sm">
+                    <img src="https://cdn.simpleicons.org/rabbitmq/FF6600" alt="RabbitMQ">
+                    <span class="tech-label">RabbitMQ</span>
+                </div>
+                <div class="tech-item-sm">
+                    <img src="https://cdn.simpleicons.org/amazonaws/white" alt="AWS">
+                    <span class="tech-label">AWS</span>
+                </div>
+                <div class="tech-item-sm">
+                    <img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker">
+                    <span class="tech-label">Docker</span>
+                </div>
             </div>
         </div>
 
@@ -269,8 +304,14 @@
                 </div>
                 
                 <div class="problem-solution">
-                    <div class="ps-block"><span class="ps-label">[문제]</span> MySQL LIKE 검색의 Full Scan 및 한글 형태소 분석 불가</div>
-                    <div class="ps-block"><span class="ps-label">[해결]</span> OpenSearch 도입으로 평균 응답 속도 690ms → 52ms 개선</div>
+                    <div class="ps-block">
+                        <span class="ps-label">[문제 상황]</span>
+                        MySQL `LIKE` 검색은 Full Table Scan(690ms)을 유발하여 병목이 발생했고, 형태소 분석이 불가능해 정확한 한글 검색 결과를 제공하는 데 한계가 있었습니다.
+                    </div>
+                    <div class="ps-block">
+                        <span class="ps-label">[해결 방법]</span>
+                        AWS OpenSearch를 도입하여 역인덱스 기반의 검색 환경을 구축했습니다. nori 형태소 분석기를 적용하고 Redis를 통해 데이터를 실시간 동기화하여 평균 응답 속도를 52ms로 단축했습니다.
+                    </div>
                 </div>
 
                 <div class="chart-area">
@@ -285,8 +326,14 @@
                 </div>
 
                 <div class="problem-solution">
-                    <div class="ps-block"><span class="ps-label">[문제]</span> 단일 DB 트래픽 집중으로 CPU 800% 급등 장애 위험</div>
-                    <div class="ps-block"><span class="ps-label">[해결]</span> Master/Slave Replication 구축하여 읽기 부하 분산</div>
+                    <div class="ps-block">
+                        <span class="ps-label">[문제 상황]</span>
+                        단일 DB 인스턴스에 읽기/쓰기 트래픽이 모두 집중되면서, 피크 시간대 CPU 부하가 800%까지 급등하여 전체 서비스 장애 위험이 발생했습니다.
+                    </div>
+                    <div class="ps-block">
+                        <span class="ps-label">[해결 방법]</span>
+                        Master/Slave Replication 아키텍처를 구축했습니다. 쓰기 작업은 Master로, 읽기 작업은 Slave로 라우팅(`@Transactional(readOnly=true)`)하여 Master DB의 CPU 부하를 30% 수준으로 안정화했습니다.
+                    </div>
                 </div>
 
                 <div class="chart-area">
@@ -301,8 +348,14 @@
                 </div>
 
                 <div class="problem-solution">
-                    <div class="ps-block"><span class="ps-label">[문제]</span> 스레드 경합으로 응답 지연(P95 19.6s) 및 에러 발생</div>
-                    <div class="ps-block"><span class="ps-label">[해결]</span> Java 21 Virtual Thread 도입으로 블로킹 I/O 효율화</div>
+                    <div class="ps-block">
+                        <span class="ps-label">[문제 상황]</span>
+                        동시 접속자 증가 시 스레드 경합으로 인해 P95 응답 지연이 19.6초까지 발생하고, 스레드 풀 고갈로 에러율이 1%까지 치솟았습니다.
+                    </div>
+                    <div class="ps-block">
+                        <span class="ps-label">[해결 방법]</span>
+                        Java 21의 Virtual Thread를 도입하여 블로킹 I/O 작업을 효율적으로 처리했습니다. 그 결과 평균 처리량(TPS)이 2.7배 증가하고, 에러율 0%의 완전한 안정성을 확보했습니다.
+                    </div>
                 </div>
 
                 <div class="chart-area">
@@ -317,8 +370,14 @@
                 </div>
 
                 <div class="problem-solution">
-                    <div class="ps-block"><span class="ps-label">[문제]</span> Java 런타임 초기화 지연(47ms)으로 성능 및 비용 저하</div>
-                    <div class="ps-block"><span class="ps-label">[해결]</span> SnapStart 적용으로 실행시간 4ms로 단축, 비용 90% 절감</div>
+                    <div class="ps-block">
+                        <span class="ps-label">[문제 상황]</span>
+                        Java 기반 Lambda 함수의 초기화 지연(Cold Start)으로 인해 평균 47ms의 지연이 발생했으며, 잦은 실행으로 인한 비용 증가가 우려되었습니다.
+                    </div>
+                    <div class="ps-block">
+                        <span class="ps-label">[해결 방법]</span>
+                        SnapStart를 적용하여 실행 환경을 미리 캐싱(Pre-warming)했습니다. 실행 시간을 4ms로 단축하여 성능을 12배 향상시키고, 과금 비용을 90% 이상 절감했습니다.
+                    </div>
                 </div>
 
                 <div class="chart-area">
