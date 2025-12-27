@@ -7,6 +7,7 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
+        /* ... (이전 CSS와 동일, 아래 tech-stack 관련 CSS만 수정/확인 해주세요) ... */
         :root {
             --bg-color: #121212;
             --card-bg: #1e1e1e;
@@ -31,6 +32,7 @@
             gap: 2rem;
             align-items: start;
         }
+        /* Sidebar CSS 생략 (이전과 동일) */
         .sidebar {
             background: var(--sidebar-bg);
             padding: 2rem;
@@ -91,6 +93,7 @@
         .edu-school { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 2px; }
         .edu-desc { font-size: 0.85rem; color: #888; }
         .main-content { display: flex; flex-direction: column; gap: 2rem; }
+        
         .project-header-card {
             background: var(--card-bg);
             padding: 2.5rem;
@@ -113,6 +116,38 @@
         }
         .links a:hover { background: var(--accent); color: #000; }
         .project-desc { color: #ccc; border-top: 1px solid #333; padding-top: 1.5rem; margin-top: 1rem; }
+        
+        /* [수정됨] Tech Stack Badge Style Update */
+        .project-tech-stack {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #333;
+        }
+        .tech-badge {
+            background: rgba(30, 30, 30, 1);
+            border: 1px solid #444;
+            color: #ccc;
+            padding: 5px 12px;
+            border-radius: 6px; /* 둥근 정도를 살짝 줄여서 모던하게 */
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.2s;
+        }
+        .tech-badge:hover {
+            border-color: var(--accent);
+            color: #fff;
+            transform: translateY(-2px);
+            background: rgba(0, 224, 199, 0.1);
+        }
+        /* 카테고리별 색상 포인트 (선택사항) */
+        .tech-badge.core { border-left: 3px solid var(--accent); }
+        .tech-badge.infra { border-left: 3px solid #ff9900; }
+        
         .architecture-section {
             background: var(--card-bg);
             padding: 2rem;
@@ -153,6 +188,8 @@
             gap: 10px;
         }
         .section-title::before { content: ''; display: block; width: 4px; height: 24px; background: var(--accent); }
+        
+        /* Skill & Achievement CSS (동일) */
         .skill-highlights { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
         .skill-box {
             background: #252525;
@@ -166,6 +203,7 @@
         .skill-box h3::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
         .skill-box p { font-size: 0.9rem; color: #ccc; line-height: 1.6; word-break: keep-all; }
         .skill-box strong { color: var(--accent); font-weight: 600; }
+        
         .achievement-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
         .card {
             background: var(--card-bg);
@@ -236,11 +274,11 @@
             <div class="tech-grid-sm">
                 <div class="tech-item-sm">
                     <img src="https://cdn.simpleicons.org/openjdk/white" alt="Java">
-                    <span class="tech-label">Java 21</span>
+                    <span class="tech-label">Java</span>
                 </div>
                 <div class="tech-item-sm">
                     <img src="https://cdn.simpleicons.org/springboot/6DB33F" alt="Spring Boot">
-                    <span class="tech-label">Spring Boot</span>
+                    <span class="tech-label">Spring</span>
                 </div>
                 <div class="tech-item-sm">
                     <img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL">
@@ -252,7 +290,7 @@
                 </div>
                 <div class="tech-item-sm">
                     <img src="https://cdn.simpleicons.org/elasticsearch/005571" alt="Elasticsearch">
-                    <span class="tech-label">Elastic<br>search</span>
+                    <span class="tech-label">ELK</span>
                 </div>
                 <div class="tech-item-sm">
                     <img src="https://cdn.simpleicons.org/rabbitmq/FF6600" alt="RabbitMQ">
@@ -300,6 +338,25 @@
                 흥정 없는 공정한 거래를 위한 <strong>실시간 경매형 중고거래 플랫폼</strong>입니다. <br>
                 MSA 아키텍처와 이벤트 기반 설계를 도입하여 확장성을 확보했으며, 대규모 트래픽 상황에서의 고가용성과 비용 효율성에 집중했습니다.
             </p>
+            
+            <div class="project-tech-stack">
+                <span class="tech-badge core">Java 21</span>
+                <span class="tech-badge core">Spring Boot</span>
+                <span class="tech-badge">Spring Cloud Gateway</span>
+                <span class="tech-badge">Spring Data JPA</span>
+                <span class="tech-badge">QueryDSL</span>
+                <span class="tech-badge">Spring Batch</span>
+                <span class="tech-badge">MySQL</span>
+                <span class="tech-badge">Elasticsearch</span>
+                <span class="tech-badge">Redis</span>
+                <span class="tech-badge">RabbitMQ</span>
+                <span class="tech-badge infra">AWS ECS & Fargate</span>
+                <span class="tech-badge infra">AWS Lambda</span>
+                <span class="tech-badge infra">AWS Aurora</span>
+                <span class="tech-badge infra">CloudFront & S3</span>
+                <span class="tech-badge">Prometheus & Grafana</span>
+                <span class="tech-badge">GitHub Actions</span>
+            </div>
         </div>
 
         <div class="architecture-section">
@@ -331,7 +388,7 @@
                     <canvas id="chartRedis"></canvas>
                 </div>
             </div>
-
+            
             <div class="card span-full">
                 <div class="card-head">
                     <div class="card-title">비동기 처리: 응답 속도 36% 단축</div>
@@ -401,18 +458,16 @@
                     기존 스레드 풀 한계로 발생하던 병목을 <strong>Java 21 Virtual Thread</strong>로 해결했습니다. Blocking I/O를 효율적으로 처리하여 <strong>TPS를 2.7배 향상</strong>시키고 스레드 고갈 문제를 해결했습니다.
                 </div>
             </div>
-            
             <div class="card">
                 <div class="card-head">
                     <div class="card-title">Lambda Cold Start 개선</div>
                     <span class="card-badge">Serverless</span>
                 </div>
                 <div class="card-desc">
-                    Lambda 실행 시 발생하던 초기화 지연(47ms)을 <strong>SnapStart</strong> 도입으로 해결했습니다. 실행 환경 캐싱(Pre-warming)을 통해 실행 시간을 <strong>4ms로 단축(91.5% 개선)</strong>했습니다.
+                    Lambda 실행 시 발생하던 초기화 지연(47ms)을 <strong>SnapStart</strong> 도입으로 해결했습니다. 실행 환경 캐싱(Pre-warming)을 통해 실행 시간을 <strong>4ms로 단축</strong>했습니다.
                 </div>
             </div>
-
-            <div class="card">
+             <div class="card">
                 <div class="card-head">
                     <div class="card-title">CloudFront 도입 (45배 개선)</div>
                     <span class="card-badge">Infrastructure</span>
@@ -421,28 +476,7 @@
                     <strong>S3 저장소</strong>와 CloudFront(CDN)를 연동하여 이미지 로딩 속도를 S3 직접 접근(1.2s) 대비 <strong>27ms</strong>로 대폭 개선하고 OAC 보안을 적용했습니다.
                 </div>
             </div>
-
-            <div class="card">
-                <div class="card-head">
-                    <div class="card-title">ECS ARM64 아키텍처 전환</div>
-                    <span class="card-badge">Cost Efficiency</span>
-                </div>
-                <div class="card-desc">
-                    Fargate Graviton2 도입으로 x86 대비 <strong>비용 20% 절감</strong> 및 응답 속도 20% 개선 (비용 효율 56% 향상).
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-head">
-                    <div class="card-title">RDS Proxy 적용</div>
-                    <span class="card-badge">Database</span>
-                </div>
-                <div class="card-desc">
-                    Connection Pooling 최적화로 <strong>P95 응답시간 14.4% 개선</strong> 및 DB 커넥션 수 50% 감소.
-                </div>
-            </div>
-
-            <div class="card">
+             <div class="card">
                 <div class="card-head">
                     <div class="card-title">쿼리 튜닝 (복합 인덱스)</div>
                     <span class="card-badge">Optimization</span>
@@ -452,7 +486,97 @@
                 </div>
             </div>
         </div> 
+
         <div class="section-separator"></div>
+
+        <div class="project-header-card">
+            <div class="project-top">
+                <div class="project-title">
+                    <h2>TaskFlow (협업 Task 관리 시스템)</h2>
+                    <span class="project-date">2025 (DevLog)</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/dev-log-2/dev-log" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <p class="project-desc">
+                UI 및 REST API 명세서를 바탕으로 구축한 <strong>Spring Boot 기반의 Task 관리 API 서버</strong>입니다. <br>
+                <strong>Spring Security & JWT</strong>를 이용한 안전한 인증/인가 시스템을 구축하고, <strong>Docker</strong> 환경에서 프론트엔드와 연동하여 안정적인 협업 서비스를 구현했습니다.
+            </p>
+            
+            <div class="project-tech-stack">
+                <span class="tech-badge core">Java 17</span>
+                <span class="tech-badge core">Spring Boot</span>
+                <span class="tech-badge">Spring Security & JWT</span>
+                <span class="tech-badge">Spring Data JPA</span>
+                <span class="tech-badge">Spring AOP</span>
+                <span class="tech-badge">MySQL</span>
+                <span class="tech-badge">H2 Console</span>
+                <span class="tech-badge infra">Docker</span>
+                <span class="tech-badge">Gradle</span>
+                <span class="tech-badge">Postman</span>
+            </div>
+        </div>
+        
+
+        <div class="achievement-grid">
+            <div class="card span-full">
+                <div class="card-head">
+                    <div class="card-title">Spring Security & JWT 인증 구현</div>
+                    <span class="card-badge">Security</span>
+                </div>
+                <div class="problem-solution">
+                    <div class="ps-block">
+                        <span class="ps-label">[구현 상세]</span>
+                        <strong>Stateless한 인증</strong>을 위해 Session 대신 JWT를 도입했습니다. <code>JwtAuthenticationFilter</code>를 통해 요청 헤더의 토큰을 검증하고, SecurityContext에 인증 객체를 저장하여 인가를 처리했습니다.
+                    </div>
+                    <div class="ps-block">
+                        <span class="ps-label">[성과]</span>
+                        <code>@AuthenticationPrincipal</code> 커스텀 어노테이션을 활용해 컨트롤러 계층에서 불필요한 DB 조회를 제거하고, 현재 로그인한 사용자 정보에 즉시 접근 가능한 환경을 구축했습니다.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card span-full">
+                <div class="card-head">
+                    <div class="card-title">AOP 기반 로깅 시스템 구축</div>
+                    <span class="card-badge">AOP</span>
+                </div>
+                <div class="problem-solution">
+                    <div class="ps-block">
+                        <span class="ps-label">[문제 상황]</span>
+                        Task 생성, 수정, 상태 변경 등 모든 핵심 비즈니스 로직에 로깅 코드가 산재되어 코드 중복이 발생하고 가독성이 저하되었습니다.
+                    </div>
+                    <div class="ps-block">
+                        <span class="ps-label">[해결 방법]</span>
+                        <strong>Spring AOP</strong>를 도입하여 로깅을 관점(Aspect)으로 분리했습니다. <code>@AfterReturning</code>을 사용하여 비즈니스 로직 성공 시에만 활동 로그(Activity Log)가 자동으로 DB에 적재되도록 자동화했습니다.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-head">
+                    <div class="card-title">계층형 댓글 구조 (Self-Join)</div>
+                    <span class="card-badge">Database</span>
+                </div>
+                <div class="card-desc">
+                    하나의 Comment 테이블 내에서 <code>parent_id</code>를 통한 <strong>Self-Referencing</strong> 관계를 설계하여 대댓글 기능을 구현했습니다. <code>@Where(clause = "is_deleted = false")</code>와 Soft Delete를 적용해 데이터 무결성을 보장했습니다.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-head">
+                    <div class="card-title">Docker 개발 환경 표준화</div>
+                    <span class="card-badge">DevOps</span>
+                </div>
+                <div class="card-desc">
+                    프론트엔드와 백엔드를 각각 <strong>Docker Container</strong>로 패키징하고 <code>docker-compose</code>로 네트워크를 연결했습니다. 로컬 개발 환경의 불일치 문제를 해결하고, <code>application-local.yml</code> 분리를 통해 배포 안정성을 확보했습니다.
+                </div>
+            </div>
+        </div>
+
+        <div class="section-separator"></div>
+        
         <div class="section-title">Core Competencies</div>
         <div class="skill-highlights">
             <div class="skill-box">
